@@ -1,0 +1,16 @@
+{
+  "name": "net4j-loading-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "prepublish": "tsc",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "net4j": "^0.0.7"
+  }
+}
