@@ -1,16 +1,21 @@
 {
   "name": "net4j",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Pluggable & Promise based HTTP client for the browser and node.js",
   "main": "build/index.js",
   "scripts": {
     "build": "tsc",
     "prepublish": "tsc",
+    "test": "npm run build && jest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["http"],
+  "author": "forthedamn",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "jest": "^24.1.0",
+    "sinon": "^7.2.7"
   }
 }

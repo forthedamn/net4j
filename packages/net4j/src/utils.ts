@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { METHOD, IConfig, IPlugin, LifeTimeEnum } from '..';
+import { METHOD, IConfig, IPlugin, LifeTimeEnum } from './index';
 
 const DEFAULT_TIMEOUT = 10000;
 

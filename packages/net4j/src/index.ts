@@ -1,12 +1,45 @@
-import { METHOD, IDeleteRoute, IGetRoute, IPostRoute, IPutRoute, IConfig, IPlugin } from '..';
 import { requestHandler } from './utils';
 import { beforeRequest, afterRequest } from './plugins';
+
+import { AxiosRequestConfig, AxiosResponse } from "axios";
+
+export interface IPlugin {
+  beforeRequest?(e?: Error, config?: AxiosRequestConfig): IConfig | Promise<IConfig>;
+  request?<T = any>(method: METHOD, url:string, config?: IConfig, data?: any): Promise<T>;
+  afterRequest?<T = any>(e?: Error, response?: T): T | Promise<AxiosResponse<Error>>;
+}
+
+export interface IGetRoute {}
+
+export interface IPostRoute {}
+
+export interface IPutRoute {}
+
+export interface IConfig extends AxiosRequestConfig {
+  plugins?: Array<IPlugin>,
+  timeout?: number;
+}
+
+export interface IDeleteRoute {}
+
+export enum METHOD {
+  GET,
+  POST,
+  PUT,
+  DELETE,
+}
+
+export enum LifeTimeEnum {
+  beforeRequest = 'beforeRequest',
+  afterRequest = 'afterRequest',
+  request = 'request',
+}
 
 class Net4j {
   netConfig: IConfig;
   private pluginsList: IPlugin[];
 
-  constructor(config) {
+  constructor(config = {plugins: []}) {
     this.netConfig = config;
     const pluginsList = config.plugins;
     if (pluginsList && pluginsList.length > 0) {

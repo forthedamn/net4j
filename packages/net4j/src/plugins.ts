@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IPlugin } from '..';
+import { IPlugin } from './index';
 
 export const beforeRequest = (plugin: IPlugin) => {
   if (plugin.beforeRequest) {
