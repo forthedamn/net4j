@@ -7,16 +7,16 @@ declare module 'net4j' {
   }
 }
 
-interface IConfig<T = any, K = any> {
+interface IConfig {
   loading: (text?: string) => () => void;
   loadingText?: string;
 }
 
-class LoadingPlugin<T, K> implements IPlugin{
-  private config: IConfig<T, K>;
+class LoadingPlugin implements IPlugin{
+  private config: IConfig;
   private loadingClose: () => void;
 
-  constructor(config: IConfig<T>) {
+  constructor(config: IConfig) {
     this.config = config;
     this.loadingClose = () => {};
   }
