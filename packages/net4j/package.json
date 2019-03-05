@@ -1,0 +1,16 @@
+{
+  "name": "net4j",
+  "version": "0.0.7",
+  "description": "Pluggable & Promise based HTTP client for the browser and node.js",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "tsc",
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
