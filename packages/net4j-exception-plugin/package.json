@@ -1,0 +1,18 @@
+{
+  "name": "net4j-exception-plugin",
+  "version": "1.0.0",
+  "description": "Handle every request when exception",
+  "main": "build/index.js",
+  "scripts": {
+    "prepublish": "tsc",
+    "build": "tsc"
+  },
+  "keywords": [
+    "http"
+  ],
+  "author": "forthedamn",
+  "license": "ISC",
+  "dependencies": {
+    "net4j": "0.0.14"
+  }
+}

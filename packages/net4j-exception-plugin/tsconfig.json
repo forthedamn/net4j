@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./build",
+    "declaration": true,
+    "typeRoots": [
+      "./net4j.d.ts"
+    ]
+  },
+  "include": ["src"]
+}
