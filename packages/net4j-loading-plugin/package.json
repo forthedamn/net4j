@@ -1,14 +1,14 @@
 {
   "name": "net4j-loading-plugin",
   "version": "1.0.0",
-  "description": "",
+  "description": "Handle every request when loading",
   "main": "build/index.js",
   "scripts": {
     "prepublish": "tsc",
     "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["http"],
+  "author": "forthedamn",
   "license": "ISC",
   "dependencies": {
     "net4j": "^0.0.7"

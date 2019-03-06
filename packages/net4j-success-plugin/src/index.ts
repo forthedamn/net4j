@@ -12,7 +12,7 @@ interface IConfig {
   successText?: string;
 }
 
-class LoadingPlugin implements IPlugin{
+class SuccessPlugin implements IPlugin{
   private config: IConfig;
   private successText: string;
 
@@ -38,4 +38,4 @@ class LoadingPlugin implements IPlugin{
   }
 }
 
-export default LoadingPlugin;
+export default SuccessPlugin;
