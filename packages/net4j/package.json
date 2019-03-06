@@ -1,6 +1,6 @@
 {
   "name": "net4j",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Pluggable & Promise based HTTP client for the browser and node.js",
   "main": "build/index.js",
   "scripts": {
@@ -8,7 +8,9 @@
     "prepublish": "tsc",
     "test": "npm run build && jest"
   },
-  "keywords": ["http"],
+  "keywords": [
+    "http"
+  ],
   "author": "forthedamn",
   "license": "ISC",
   "dependencies": {
