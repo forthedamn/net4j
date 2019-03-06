@@ -1,0 +1,16 @@
+{
+  "name": "net4j-success-plugin",
+  "version": "1.0.0",
+  "description": "Handle every request when success",
+  "main": "build/index.js",
+  "scripts": {
+    "prepublish": "tsc",
+    "build": "tsc"
+  },
+  "keywords": ["http"],
+  "author": "forthedamn",
+  "license": "ISC",
+  "dependencies": {
+    "net4j": "^0.0.7"
+  }
+}
