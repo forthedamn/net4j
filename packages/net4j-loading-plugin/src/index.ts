@@ -20,9 +20,6 @@ class LoadingPlugin implements IPlugin{
   }
 
   beforeRequest(e: Error, config: NetConfig) {
-    if (e) {
-      return;
-    }
     // For more flexible , every request can reset laodingText.
     const loadingText = (config.actionName || '') +
       (config.defaultLoadingText || this.config.defaultLoadingText || 'loading');
@@ -33,7 +30,7 @@ class LoadingPlugin implements IPlugin{
   afterRequest(e, res) {
     this.loadingClose();
     if (e) {
-      return;
+      return Promise.reject(e);
     }
     return res;
   }

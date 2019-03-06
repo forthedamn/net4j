@@ -18,9 +18,6 @@ class SuccessPlugin implements IPlugin{
   }
 
   beforeRequest(e, config: NetConfig){
-    if (e) {
-      return;
-    }
     // For more flexible , every request can reset successText.
     this.successText = (config.actionName || '') +
       (config.defaultSuccessText || this.config.defaultSuccessText || 'success');
