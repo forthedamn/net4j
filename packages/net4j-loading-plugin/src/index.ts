@@ -1,15 +1,13 @@
-import { IPlugin, IConfig as NetConfig } from 'net4j';
+import { IPlugin, IConfig as RootConfig } from 'net4j';
 
-declare module 'net4j' {
-  interface IConfig {
-    actionName?: string;
-    loadingText?: string;
-  }
+export interface NetConfig extends RootConfig {
+  actionName?: string;
+  defaultLoadingText?: string;
 }
 
 interface IConfig {
   loading: (text?: string) => () => void;
-  loadingText?: string;
+  defaultLoadingText?: string;
 }
 
 class LoadingPlugin implements IPlugin{
@@ -21,12 +19,13 @@ class LoadingPlugin implements IPlugin{
     this.loadingClose = () => {};
   }
 
-  beforeRequest(e, config: NetConfig){
+  beforeRequest(e: Error, config: NetConfig) {
     if (e) {
-      return Promise.reject(e);
+      return;
     }
     // For more flexible , every request can reset laodingText.
-    const loadingText = config.actionName + (config.loadingText || this.config.loadingText || 'loading');
+    const loadingText = (config.actionName || '') +
+      (config.defaultLoadingText || this.config.defaultLoadingText || 'loading');
     this.loadingClose = this.config.loading(loadingText);
     return config;
   }
@@ -34,7 +33,7 @@ class LoadingPlugin implements IPlugin{
   afterRequest(e, res) {
     this.loadingClose();
     if (e) {
-      return Promise.reject(e);
+      return;
     }
     return res;
   }
