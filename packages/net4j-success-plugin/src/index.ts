@@ -1,15 +1,12 @@
-import { IPlugin, IConfig as NetConfig } from 'net4j';
+import { IPlugin, IConfig as RootConfig } from 'net4j';
 
-declare module 'net4j' {
-  interface IConfig {
-    actionName?: string;
-    successText?: string;
-  }
+export interface NetConfig extends RootConfig {
+  actionName?: string;
+  defaultSuccessText?: string;
 }
-
 interface IConfig {
-  toast: (text?: string) => () => void;
-  successText?: string;
+  tipsComponent: (text?: string) => void;
+  defaultSuccessText?: string;
 }
 
 class SuccessPlugin implements IPlugin{
@@ -22,10 +19,11 @@ class SuccessPlugin implements IPlugin{
 
   beforeRequest(e, config: NetConfig){
     if (e) {
-      return Promise.reject(e);
+      return;
     }
     // For more flexible , every request can reset successText.
-    this.successText = config.actionName + (config.successText || this.config.successText || 'success');
+    this.successText = (config.actionName || '') +
+      (config.defaultSuccessText || this.config.defaultSuccessText || 'success');
     return config;
   }
 
@@ -33,7 +31,9 @@ class SuccessPlugin implements IPlugin{
     if (e) {
       return Promise.reject(e);
     }
-    setTimeout(this.config.toast(this.successText))
+    setTimeout(()=> {
+      this.config.tipsComponent(this.successText)
+    });
     return res;
   }
 }
