@@ -1,6 +1,6 @@
 # net4j-success-plugin
 
-Easy to set success tip when request completed successfully.
+Easily to set success tip when request completed successfully.
 
 ```
 import Net from 'net4j';

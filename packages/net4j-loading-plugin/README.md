@@ -1,6 +1,6 @@
 # net4j-loading-plugin
 
-Easy to set loading toast when request pending.
+Easily to set loading toast when request pending.
 
 ```
 import Net from 'net4j';
