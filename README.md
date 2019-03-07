@@ -1,5 +1,11 @@
 # net4j
 
+[![npm version](https://img.shields.io/npm/v/net4j.svg?style=flat-square)](https://www.npmjs.org/package/net4j)
+[![install size](https://badgen.net/packagephobia/install/net4j)](https://packagephobia.now.sh/result?p=net4j)
+[![npm downloads](https://img.shields.io/npm/dm/net4j.svg?style=flat-square)](http://npm-stat.com/charts.html?package=net4j)
+[![downloads](https://img.shields.io/npm/dt/net4j.svg?style=flat-square)](https://img.shields.io/npm/dt/net4j.svg?style=flat-square)
+  <img src='https://img.shields.io/npm/l/net4j.svg' alt="license">
+
 Pluggable & Promise based HTTP client for the browser and node.js
 
 ## Features
