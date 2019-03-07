@@ -1,6 +1,6 @@
 {
   "name": "net4j-loading-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Handle every request when loading",
   "main": "build/index.js",
   "scripts": {
