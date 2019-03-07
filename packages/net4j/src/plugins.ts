@@ -1,4 +1,6 @@
 import axios from 'axios';
+import NetLog from 'net4j-log-plugin';
+
 import { IPlugin, ILib } from './index';
 
 export const initPlugin = (plugin: IPlugin, lib: ILib) => {
@@ -23,3 +25,15 @@ export const initPlugin = (plugin: IPlugin, lib: ILib) => {
   }
   return lib;
 }
+
+// 内置插件
+export const defaultPlugin: IPlugin[] = [
+  new NetLog({
+    log: {
+      info: (...args) => {
+        console.log('[net4j]', ...args)
+      },
+      error: console.error,
+    }
+  }),
+]

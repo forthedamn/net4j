@@ -1,4 +1,5 @@
 import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { ILib as LogLib } from 'net4j-log-plugin';
 import Net from './net';
 
 export default Net;
@@ -17,12 +18,12 @@ export interface IPostRoute {}
 
 export interface IPutRoute {}
 
-export interface ILib {}
+export interface ILib extends LogLib{}
 
 export interface IConfig extends AxiosRequestConfig {
   plugins?: Array<IPlugin>,
   timeout?: number;
-  lib?: { [key: string]: any};
+  lib?: ILib & { [key: string]: any};
 }
 
 export interface IDeleteRoute {}

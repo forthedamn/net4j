@@ -1,16 +1,16 @@
-import { IGetRoute, IConfig, IPlugin, METHOD, IDeleteRoute, IPostRoute, IPutRoute } from './index';
+import { IGetRoute, IConfig, IPlugin, METHOD, IDeleteRoute, IPostRoute, IPutRoute, ILib } from './index';
 import { requestHandler } from './utils';
-import { initPlugin } from './plugins';
+import { initPlugin, defaultPlugin } from './plugins';
 
 class Net4j {
   netConfig: IConfig;
   private pluginsList: IPlugin[];
-  private lib: {[key: string]: any};
+  private lib: ILib;
 
   constructor(config:IConfig = {}) {
     this.netConfig = config;
-    this.lib = config.lib || {};
-    const pluginsList = config.plugins || [];
+    this.lib = config.lib;
+    const pluginsList = defaultPlugin.concat(config.plugins || []);
     if (pluginsList && pluginsList.length > 0) {
       this.pluginsList = pluginsList;
     }
