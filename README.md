@@ -6,6 +6,7 @@ Pluggable & Promise based HTTP client for the browser and node.js
 
 * Support Typescript
 * Pluggable, easily unified processing
+* Dependency injection
 * Make XMLHttpRequests from the browser
 * Make http requests from node.js
 * Supports the Promise API
@@ -125,3 +126,14 @@ const result = await net.get('/api/v2/goods');
 * [net4j-loading-plugin](https://github.com/forthedamn/net4j/tree/master/packages/net4j-loading-plugin): Unified set 「loading toast」 when request pending.
 * [net4j-exception-plugin](https://github.com/forthedamn/net4j/tree/master/packages/net4j-exception-plugin): Unified set 「error tip」 when request get exception.
 * [net4j-log-plugin](https://github.com/forthedamn/net4j/tree/master/packages/net4j-log-plugin): Inject 「log libary」 in request, it will be used when request get exception or other critical operations
+
+### How to write a plugin
+
+```ts
+export interface IPlugin {
+  beforeRequest?(e?: Error, config?: AxiosRequestConfig, lib?: ILib): IConfig | Promise<IConfig>;
+  // Inject libs to whole request, so other plugins use these libs 
+  applyLib?(lib: { [key: string]: any}): { [key: string]: any};
+  afterRequest?<T = any>(e?: Error, response?: T, lib?: ILib): T | Promise<AxiosResponse<Error>>;
+}
+```
