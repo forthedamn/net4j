@@ -1,11 +1,5 @@
 # net4j
 
-[![npm version](https://img.shields.io/npm/v/net4j.svg?style=flat-square)](https://www.npmjs.org/package/net4j)
-[![install size](https://badgen.net/packagephobia/install/net4j)](https://packagephobia.now.sh/result?p=net4j)
-[![npm downloads](https://img.shields.io/npm/dm/net4j.svg?style=flat-square)](http://npm-stat.com/charts.html?package=net4j)
-[![downloads](https://img.shields.io/npm/dt/net4j.svg?style=flat-square)](https://img.shields.io/npm/dt/net4j.svg?style=flat-square)
-  <img src='https://img.shields.io/npm/l/net4j.svg' alt="license">
-
 Pluggable & Promise based HTTP client for the browser and node.js
 
 ## Features
@@ -46,12 +40,17 @@ import Net from 'net4j';
 
 const net = new Net();
 
-// Type merge,so then /api/v2/goods will be typed
+// Type merge,so that /api/v2/goods will be typed
 declare module 'net4j' {
   interface IGetRoute {
     '/api/v2/goods': {
-      data: {
-        GoodsInfo
+      request: {
+        id: number
+      }
+      response: {
+        data: {
+          GoodsInfo
+        } 
       }
     },
   }
@@ -77,11 +76,16 @@ declare module 'net4j' {
   // Merge plugin config to net4j config,then you can use it in every requst in net4j
   interface IConfig extends SuccessConfig, LoadingConfig, ExceptionConfig {};
 
-  // Type merge,so then /api/v2/goods will be typed
+  // Type merge,so that /api/v2/goods will be typed
   interface IGetRoute {
     '/api/v2/goods': {
-      data: {
-        GoodsInfo
+      request: {
+        id: number
+      }
+      response: {
+        data: {
+          GoodsInfo
+        } 
       }
     },
   }
@@ -123,7 +127,7 @@ const net = new Net(plugins: [
 
 // `GET` request
 // result will be typed with {data: {GoodsInfo}}
-const result = await net.get('/api/v2/goods');
+const result = await net.get('/api/v2/goods', {params: {id: 123}});
 ```
 
 ## Plugins
