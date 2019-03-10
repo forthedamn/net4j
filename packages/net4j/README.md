@@ -40,12 +40,17 @@ import Net from 'net4j';
 
 const net = new Net();
 
-// Type merge,so then /api/v2/goods will be typed
+// Type merge,so that /api/v2/goods will be typed
 declare module 'net4j' {
   interface IGetRoute {
     '/api/v2/goods': {
-      data: {
-        GoodsInfo
+      request: {
+        id: number
+      }
+      response: {
+        data: {
+          GoodsInfo
+        } 
       }
     },
   }
@@ -71,11 +76,16 @@ declare module 'net4j' {
   // Merge plugin config to net4j config,then you can use it in every requst in net4j
   interface IConfig extends SuccessConfig, LoadingConfig, ExceptionConfig {};
 
-  // Type merge,so then /api/v2/goods will be typed
+  // Type merge,so that /api/v2/goods will be typed
   interface IGetRoute {
     '/api/v2/goods': {
-      data: {
-        GoodsInfo
+      request: {
+        id: number
+      }
+      response: {
+        data: {
+          GoodsInfo
+        } 
       }
     },
   }
@@ -117,7 +127,7 @@ const net = new Net(plugins: [
 
 // `GET` request
 // result will be typed with {data: {GoodsInfo}}
-const result = await net.get('/api/v2/goods');
+const result = await net.get('/api/v2/goods', {params: {id: 123}});
 ```
 
 ## Plugins

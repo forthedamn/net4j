@@ -25,23 +25,23 @@ class Net4j {
     }
   }
 
-  private async request(method: METHOD, url: string, config?: IConfig, data?: any) {
-    return await requestHandler(method, url, config, data);
+  private async request(method: METHOD, url: string | number, config?: IConfig, data?: any) {
+    return await requestHandler(method, url as string, config, data);
   }
 
-  async get<URL extends keyof IGetRoute>(url: URL, config?: IConfig): Promise<IGetRoute[URL]> {
+  async get<URL extends keyof IGetRoute>(url: URL, config?: IConfig<IGetRoute[URL]['request']>): Promise<IGetRoute[URL]['response']> {
     return await this.request(METHOD.GET, url, config);
   }
 
-  async post<URL extends keyof IPostRoute>(url: URL, postdata?: any, config?: IConfig): Promise<IPostRoute[URL]> {
+  async post<URL extends keyof IPostRoute>(url: URL, postdata?: IPostRoute[URL]['request'], config?: IConfig<IPostRoute[URL]['request']>): Promise<IPostRoute[URL]['response']> {
     return await this.request(METHOD.POST, url, config, postdata);
   }
 
-  async put<URL extends keyof IPutRoute>(url: URL, pudata?: any, config?: IConfig): Promise<IPutRoute[URL]> {
+  async put<URL extends keyof IPutRoute>(url: URL, pudata?: IPutRoute[URL]['request'], config?: IConfig<IPutRoute[URL]['request']>): Promise<IPutRoute[URL]['response']> {
     return await this.request(METHOD.PUT, url, config, pudata);
   }
 
-  async dlt<URL extends keyof IDeleteRoute>(url: URL, config?: IConfig): Promise<IDeleteRoute[URL]> {
+  async dlt<URL extends keyof IDeleteRoute>(url: URL, config?: IConfig<IDeleteRoute[URL]['request']>): Promise<IDeleteRoute[URL]['response']> {
     return await this.request(METHOD.DELETE, url, config);
   }
 }

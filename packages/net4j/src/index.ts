@@ -12,21 +12,35 @@ export interface IPlugin {
   afterRequest?<T = any>(e?: Error, response?: T, lib?: ILib): T | Promise<AxiosResponse<Error>>;
 }
 
-export interface IGetRoute {}
+export interface IGetRoute {[key: string]: {
+  request?: any;
+  response?: any;
+}}
 
-export interface IPostRoute {}
+export interface IPostRoute {[key: string]: {
+  request?: any;
+  response?: any;
+}}
 
-export interface IPutRoute {}
+export interface IPutRoute {[key: string]: {
+  request?: any;
+  response?: any;
+}}
+
+export interface IDeleteRoute {[key: string]: {
+  request?: any;
+  response?: any;
+}}
 
 export interface ILib extends LogLib{}
 
-export interface IConfig extends AxiosRequestConfig {
+export interface IConfig<T = any> extends AxiosRequestConfig {
   plugins?: Array<IPlugin>,
   timeout?: number;
   lib?: ILib & { [key: string]: any};
+  data?: T;
+  params?: T;
 }
-
-export interface IDeleteRoute {}
 
 export enum METHOD {
   GET,
