@@ -40,6 +40,7 @@ export interface IConfig<T = any> extends AxiosRequestConfig {
   lib?: ILib & { [key: string]: any};
   data?: T;
   params?: T;
+  cancelRequst?: boolean;
 }
 
 export enum METHOD {
