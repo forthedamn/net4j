@@ -32,12 +32,12 @@ export interface IDeleteRoute {[key: string]: {
   response?: any;
 }}
 
-export interface ILib extends LogLib{}
+export interface ILib { [key: string]: any}
 
 export interface IConfig<T = any> extends AxiosRequestConfig {
   plugins?: Array<IPlugin>,
   timeout?: number;
-  lib?: ILib & { [key: string]: any};
+  lib?: ILib;
   data?: T;
   params?: T;
   cancelRequst?: boolean;

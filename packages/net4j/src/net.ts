@@ -9,7 +9,7 @@ class Net4j {
 
   constructor(config:IConfig = {}) {
     this.netConfig = config;
-    this.lib = config.lib;
+    this.lib = config.lib || {};
     const pluginsList = defaultPlugin.concat(config.plugins || []);
     if (pluginsList && pluginsList.length > 0) {
       this.pluginsList = pluginsList;

@@ -1,7 +1,7 @@
 import { IPlugin } from 'net4j';
 
 export interface ILib {
-  log: ILog
+  log?: ILog
 }
 
 interface ILog {
@@ -20,7 +20,7 @@ class LogPlugin implements IPlugin{
     this.config = config;
   }
 
-  applyLib(lib) {
+  applyLib(lib: ILib = {}) {
     lib.log = this.config.log;
     return lib;
   }
