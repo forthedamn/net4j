@@ -13,6 +13,6 @@
   "author": "forthedamn",
   "license": "MIT",
   "dependencies": {
-    "net4j": "^0.0.19"
+    "net4j": "latest"
   }
 }
