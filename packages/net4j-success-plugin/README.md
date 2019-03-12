@@ -5,11 +5,11 @@ Easily to set success tip when request completed successfully.
 ```
 import Net from 'net4j';
 import { message } from 'antd';
-import NetSuccess, { NetConfig } from 'net4j-success-plugin';
+import NetSuccess, { PluginConfig } from 'net4j-success-plugin';
 
 // Merge plugin config to net4j config,then you can use it in every requst in net4j
 declare module 'net4j' {
-  interface IConfig extends NetConfig {}
+  interface IConfig extends PluginConfig {}
 }
 
 const net = new Net({

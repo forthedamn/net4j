@@ -24,25 +24,22 @@ interface IReq {
   }
 }
 
-export interface ThrottleConfig extends RootConfig {
+export interface PluginConfig extends RootConfig {
   throttleConfig?: IThrottleConfig;
-  cancelRequst?: boolean;
 }
 
 interface IConfig extends IThrottleConfig {}
 
 class ThrottlePlugin implements IPlugin {
-  private config: IConfig;
   private reqList: IReq;
   private defaultWait: number;
 
   constructor(config: IConfig = {}) {
-    this.config = Object.assign({ enable: true }, config);
     this.defaultWait = config.wait || DEFAULT_WAIT;
     this.reqList = {};
   }
 
-  beforeRequest(e, config: ThrottleConfig) {
+  beforeRequest(e, config: PluginConfig) {
     if (!config.throttleConfig.enable) {
       return config;
     }

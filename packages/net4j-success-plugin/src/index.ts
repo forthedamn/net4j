@@ -1,6 +1,6 @@
 import { IPlugin, IConfig as RootConfig } from 'net4j';
 
-export interface NetConfig extends RootConfig {
+export interface PluginConfig extends RootConfig {
   actionName?: string;
   defaultSuccessText?: string;
 }
@@ -17,7 +17,7 @@ class SuccessPlugin implements IPlugin{
     this.config = config;
   }
 
-  beforeRequest(e, config: NetConfig){
+  beforeRequest(e, config: PluginConfig){
     // For more flexible , every request can reset successText.
     this.successText = (config.actionName || '') +
       (config.defaultSuccessText || this.config.defaultSuccessText || 'success');

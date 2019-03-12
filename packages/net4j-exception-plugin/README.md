@@ -5,11 +5,11 @@ Easily to set tip when request get exception.
 ```
 import Net from 'net4j';
 import { Modal } from 'antd';
-import NetException, { NetConfig } from 'net4j-exception-plugin';
+import NetException, { PluginConfig } from 'net4j-exception-plugin';
 
 // Merge plugin config to net4j config,then you can use it in every requst in net4j
 declare module 'net4j' {
-  interface IConfig extends NetConfig {}
+  interface IConfig extends PluginConfig {}
 }
 
 // Code to message

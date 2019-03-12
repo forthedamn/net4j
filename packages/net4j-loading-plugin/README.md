@@ -5,11 +5,11 @@ Easily to set loading toast when request pending.
 ```
 import Net from 'net4j';
 import { message } from 'antd';
-import NetLoading, { NetConfig } from 'net4j-loading-plugin';
+import NetLoading, { PluginConfig } from 'net4j-loading-plugin';
 
 // Merge plugin config to net4j config,then you can use it in every requst in net4j
 declare module 'net4j' {
-  interface IConfig extends NetConfig {}
+  interface IConfig extends PluginConfig {}
 }
 
 const net = new Net({

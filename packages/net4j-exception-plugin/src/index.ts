@@ -2,7 +2,7 @@ import { IPlugin, IConfig as RootConfig } from 'net4j';
 
 const MIN_EXCEPTION_HTTP_CODE = 400;
 
-export interface NetConfig extends RootConfig {
+export interface PluginConfig extends RootConfig {
   defaultExceptionText?: string;
 }
 
@@ -22,7 +22,7 @@ class ExceptionPlugin implements IPlugin {
     this.config = config;
   }
 
-  beforeRequest(e, config: NetConfig) {
+  beforeRequest(e, config: PluginConfig) {
     if (e) {
       this.config.tipsComponent(undefined, e.message);
       return Promise.reject(e);
