@@ -1,6 +1,6 @@
 {
   "name": "net4j-exception-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Handle every request when exception",
   "main": "build/index.js",
   "scripts": {

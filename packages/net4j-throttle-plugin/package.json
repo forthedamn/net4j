@@ -1,6 +1,6 @@
 {
   "name": "net4j-throttle-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Throttle each request in waiting time",
   "main": "build/index.js",
   "scripts": {
