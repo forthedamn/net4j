@@ -3,7 +3,11 @@ import { IPlugin, IConfig as RootConfig } from 'net4j';
 // default wait 1 second
 const DEFAULT_WAIT = 1000;
 
+// default throttle code in error
 const DEFAULT_CODE = 'THROTTLE_CODE';
+
+// GC when reqList keys bigger than threshold
+const GC_THRESHOLD = 20;
 
 interface IThrottleConfig {
   enable?: boolean;
@@ -50,6 +54,8 @@ class ThrottlePlugin implements IPlugin {
         e.code = DEFAULT_CODE;
         throw e;
       }
+    } else {
+      this.GC();
     }
     this.reqList[token] = {
       startTime: new Date().getTime(),
@@ -63,6 +69,14 @@ class ThrottlePlugin implements IPlugin {
       return Promise.resolve(undefined);
     }
     return response;
+  }
+
+  // GC for reqList
+  private GC() {
+    if (Object.keys(this.reqList).length > GC_THRESHOLD) {
+      this.reqList = {}
+    }
+    return;
   }
 
 }
