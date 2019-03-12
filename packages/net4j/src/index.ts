@@ -1,5 +1,4 @@
 import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { ILib as LogLib } from 'net4j-log-plugin';
 import Net from './net';
 
 export default Net;
@@ -40,7 +39,6 @@ export interface IConfig<T = any> extends AxiosRequestConfig {
   lib?: ILib;
   data?: T;
   params?: T;
-  cancelRequst?: boolean;
 }
 
 export enum METHOD {

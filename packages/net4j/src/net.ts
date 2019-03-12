@@ -26,9 +26,6 @@ class Net4j {
   }
 
   private async request(method: METHOD, url: string | number, config?: IConfig, data?: any) {
-    if (config.cancelRequst) {
-      return;
-    }
     return await requestHandler(method, url as string, config, data);
   }
 
