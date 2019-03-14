@@ -42,9 +42,11 @@ class ExceptionPlugin implements IPlugin {
     if (res && res.code >= MIN_EXCEPTION_HTTP_CODE) {
       code = res.code;
       info = res;
-    } else {
+    } else if(e) {
       code = e.code || e.response.code;
       info = e;
+    } else {
+      return res
     }
     // errorHandler can be string or function
     errorHandler = this.config.codeMsgMap && this.config.codeMsgMap[code];
