@@ -14,5 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "net4j": "0.0.14"
+  },
+  "devDependencies": {
+    "axios": "*"
   }
 }

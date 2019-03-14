@@ -8,7 +8,7 @@ export interface IPlugin {
   // 向整个 net 体系注入依赖
   applyLib?(lib: { [key: string]: any}): { [key: string]: any};
   request?<T = any>(method: METHOD, url:string, config?: IConfig, data?: any): Promise<T>;
-  afterRequest?<T = any>(e?: Error, response?: T, lib?: ILib): T | Promise<AxiosResponse<Error>>;
+  afterRequest?<T = any>(e?: Error, response?: AxiosResponse<T>, lib?: ILib): AxiosResponse<T> | Promise<AxiosResponse<Error>>;
 }
 
 export interface IGetRoute {[key: string]: {

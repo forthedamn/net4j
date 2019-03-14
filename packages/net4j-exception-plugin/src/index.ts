@@ -1,4 +1,5 @@
 import { IPlugin, IConfig as RootConfig } from 'net4j';
+import { AxiosResponse } from 'axios';
 
 const MIN_EXCEPTION_HTTP_CODE = 400;
 
@@ -12,6 +13,8 @@ interface IConfig {
   tipsComponent?: (code?: number, text?: string) => void;
   defaultExceptionText?: string;
   codeMsgMap?: {[key: string]: string | codeFunc};
+  // Get business exception code
+  bizExceptionCode?: (res: AxiosResponse) => { code?: string | number };
 }
 
 class ExceptionPlugin implements IPlugin {
@@ -37,15 +40,26 @@ class ExceptionPlugin implements IPlugin {
    * e.code
    * e.response.code(http-code) 
    */
-  afterRequest(e, res) {
+  afterRequest(e, res: AxiosResponse) {
     let code, errorHandler, info;
-    if (res && res.code >= MIN_EXCEPTION_HTTP_CODE) {
-      code = res.code;
+    // http error code
+    if (res && res.status >= MIN_EXCEPTION_HTTP_CODE) {
+      code = res.status;
       info = res;
-    } else if(e) {
+    } 
+    // get exception
+    else if(e) {
       code = e.code || e.response.code;
       info = e;
-    } else {
+    } 
+    else if (res && this.config.bizExceptionCode) {
+      const { code: _code } = this.config.bizExceptionCode(res) || {code: undefined };
+      if (_code !== undefined) {
+        code = _code;
+        info = res;
+      }
+    } 
+    else {
       return res
     }
     // errorHandler can be string or function
@@ -56,7 +70,7 @@ class ExceptionPlugin implements IPlugin {
       return;
     }
 
-    const message = errorHandler || (res && (res.msg || res.message)) ||
+    const message = errorHandler || (res && res.data && (res.data.msg || res.data.message)) ||
       (e && (e.msg || e.message)) || this.exceptionText;
 
     this.config.tipsComponent(code, message);
