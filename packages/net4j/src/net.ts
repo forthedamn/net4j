@@ -3,12 +3,10 @@ import { requestHandler } from './utils';
 import { initPlugin, defaultPlugin } from './plugins';
 
 class Net4j {
-  netConfig: IConfig;
   private pluginsList: IPlugin[];
   private lib: ILib;
 
   constructor(config:IConfig = {}) {
-    this.netConfig = config;
     this.lib = config.lib || {};
     const pluginsList = defaultPlugin.concat(config.plugins || []);
     if (pluginsList && pluginsList.length > 0) {
