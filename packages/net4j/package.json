@@ -1,6 +1,6 @@
 {
   "name": "net4j",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "Pluggable & Promise based HTTP client for the browser and node.js",
   "main": "build/index.js",
   "scripts": {
