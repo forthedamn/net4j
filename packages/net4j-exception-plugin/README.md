@@ -28,7 +28,11 @@ const net = new Net({
     otherPlugins...,
     // Exception plugin should be placed last
     new NetException({
-      tipsComponent: Modal.error,
+      tipsComponent: (code, text) => {
+          return Modal.error({
+            title: code,
+            content: text,
+          }),
       defaultExceptionText: '请求异常，请重试', // Default is 'fail'
       codeMsgMap,
     }),
