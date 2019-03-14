@@ -1,0 +1,21 @@
+{
+  "name": "net4j-formatter-plugin",
+  "version": "1.0.0",
+  "description": "Format response data",
+  "main": "build/index.js",
+  "scripts": {
+    "prepublish": "tsc",
+    "build": "tsc"
+  },
+  "keywords": [
+    "http"
+  ],
+  "author": "forthedamn",
+  "license": "MIT",
+  "dependencies": {
+    "net4j": "^0.0.7"
+  },
+  "devDependencies": {
+    "axios": "*"
+  }
+}
