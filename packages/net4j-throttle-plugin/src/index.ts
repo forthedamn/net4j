@@ -64,6 +64,8 @@ class ThrottlePlugin implements IPlugin {
     if (e && e.code === DEFAULT_CODE) {
       console.log('[net4j-throttle]Been throttled')
       return Promise.resolve(undefined);
+    } else if (e) {
+      return Promise.reject(e);
     }
     return response;
   }
