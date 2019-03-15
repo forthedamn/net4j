@@ -40,7 +40,7 @@ class ThrottlePlugin implements IPlugin {
   }
 
   beforeRequest(e, config: PluginConfig) {
-    if (!config.throttleConfig.enable) {
+    if (config && config.throttleConfig && config.throttleConfig.enable === false) {
       return config;
     }
     const token = `${config.url}#${config.method}#${JSON.stringify(config.params)}#${JSON.stringify(config.data)}`;
