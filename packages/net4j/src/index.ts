@@ -33,10 +33,12 @@ export interface IDeleteRoute {[key: string]: {
 
 export interface ILib { [key: string]: any}
 
-export interface IConfig<T = any> extends AxiosRequestConfig {
+export interface INetConfig {
   plugins?: Array<any>,
-  timeout?: number;
   lib?: ILib;
+  globalAxiosConfig?: IConfig,
+}
+export interface IConfig<T = any> extends AxiosRequestConfig {
   data?: T;
   params?: T;
 }
