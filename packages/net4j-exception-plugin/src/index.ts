@@ -12,7 +12,7 @@ type codeFunc = (e?: any) => void;
 interface IConfig {
   tipsComponent?: (code?: number, text?: string) => void;
   defaultExceptionText?: string;
-  codeMsgMap?: {[key: string]: string | codeFunc};
+  codeMsgMap?: (code?: number) => string | codeFunc;
   // Get business exception code
   bizExceptionCode?: (res: AxiosResponse) => { code?: string | number };
 }
@@ -63,7 +63,7 @@ class ExceptionPlugin implements IPlugin {
       return res
     }
     // errorHandler can be string or function
-    errorHandler = this.config.codeMsgMap && this.config.codeMsgMap[code];
+    errorHandler = this.config.codeMsgMap && this.config.codeMsgMap(code);
 
     if (typeof errorHandler === 'function') {
       errorHandler(info);

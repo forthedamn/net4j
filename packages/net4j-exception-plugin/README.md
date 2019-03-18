@@ -14,13 +14,16 @@ declare module 'net4j' {
 
 // Code to message
 // Code comes from http status,response result.code,promise reject error.code
-const codeMsgMap = {
-  404: 'page not found',
-  403: function() {
-    // In this time, tipsComponent will not show.
-    link.to('/login');
-  },
-  5400: '商品名重复'
+const codeMsgMap = (code) => {
+  const map = {
+    404: 'page not found',
+    403: function() {
+      // In this time, tipsComponent will not show.
+      link.to('/login');
+    },
+    5400: '商品名重复'
+  };
+  return map[code];
 }
 
 const net = new Net({
