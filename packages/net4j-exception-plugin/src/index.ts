@@ -62,6 +62,11 @@ class ExceptionPlugin implements IPlugin {
     else {
       return res
     }
+
+    // no code(biz error) and no error
+    if (code === undefined && !e) {
+      return res;
+    }
     // errorHandler can be string or function
     errorHandler = this.config.codeMsgMap && this.config.codeMsgMap(code);
 
@@ -75,7 +80,7 @@ class ExceptionPlugin implements IPlugin {
 
     this.config.tipsComponent(code, message);
 
-    if (res) return res;    
+    if (res) return res;
   }
 }
 
