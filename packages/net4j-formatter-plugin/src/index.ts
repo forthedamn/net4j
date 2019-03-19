@@ -1,7 +1,7 @@
 import { IPlugin, IConfig as RootConfig } from 'net4j';
 import { AxiosResponse } from 'axios';
 
-type Fomatter = <T = any>(res: AxiosResponse) => T;
+type Fomatter = (res: AxiosResponse) => any;
 
 export interface FormatterConfig extends RootConfig {
   formatter?: Fomatter,
