@@ -41,6 +41,7 @@ export interface INetConfig {
 export interface IConfig<T = any> extends AxiosRequestConfig {
   data?: T;
   params?: T;
+  restful?: {[key: string]: string};
 }
 
 export enum METHOD {

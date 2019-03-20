@@ -63,6 +63,31 @@ declare module 'net4j' {
 const result = await net.get('/api/v2/goods');
 ```
 
+### Restful
+
+```ts
+import Net from 'net4j';
+
+const net = new Net();
+
+// Type merge,so that /api/v2/goods/:id will be typed
+declare module 'net4j' {
+  interface IGetRoute {
+    '/api/v2/goods/:id': {
+      response: {
+        data: {
+          GoodsInfo
+        } 
+      }
+    },
+  }
+}
+
+// `GET` request
+// result will be typed with {data: {GoodsInfo}}
+const result = await net.get('/api/v2/goods/:id', {restful: {id: 123}});
+```
+
 ### With plugins
 
 ```ts

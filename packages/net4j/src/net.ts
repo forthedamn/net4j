@@ -27,7 +27,18 @@ class Net4j {
     }
   }
 
+  private handleRestful(url: string | number, config: IConfig) {
+    if (!config.restful) return url;
+    // 替换 restful 字段
+    const restRE = /\/:(\w+)/g;
+    return String(url).replace(restRE, (_, key) => {
+      const value = config.restful[key];
+      return '/' + ((value !== undefined) ? encodeURIComponent(value) : (':' + key));
+    });
+  }
+
   private async request(method: METHOD, url: string | number, config?: IConfig, data?: any) {
+    url = this.handleRestful(url, config);
     config = Object.assign({}, this.axiosConfig, config);
     return await requestHandler(method, url as string, config, data);
   }
