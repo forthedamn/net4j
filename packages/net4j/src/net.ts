@@ -27,8 +27,8 @@ class Net4j {
     }
   }
 
-  private handleRestful(url: string | number, config: IConfig) {
-    if (!config.restful) return url;
+  private handleRestful(url: string | number, config?: IConfig) {
+    if (!config || !config.restful) return url;
     // 替换 restful 字段
     const restRE = /\/:(\w+)/g;
     return String(url).replace(restRE, (_, key) => {
