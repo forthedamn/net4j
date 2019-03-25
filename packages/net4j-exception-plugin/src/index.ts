@@ -7,7 +7,7 @@ export interface PluginConfig extends RootConfig {
   defaultExceptionText?: string;
 }
 
-type codeFunc = (e?: any) => void;
+type codeFunc = (e?: AxiosResponse) => void;
 
 interface IConfig {
   tipsComponent?: (code?: number, text?: string) => void;
@@ -49,7 +49,7 @@ class ExceptionPlugin implements IPlugin {
     } 
     // get exception
     else if(e) {
-      code = e.code || e.response.code;
+      code = e.code || (e.response && e.response.code)s;
       info = e;
     } 
     else if (res && this.config.bizExceptionCode) {
@@ -71,8 +71,7 @@ class ExceptionPlugin implements IPlugin {
     errorHandler = this.config.codeMsgMap && this.config.codeMsgMap(code);
 
     if (typeof errorHandler === 'function') {
-      errorHandler(info);
-      return;
+      return errorHandler(info);
     }
 
     const message = errorHandler || (res && res.data && (res.data.msg || res.data.message)) ||
