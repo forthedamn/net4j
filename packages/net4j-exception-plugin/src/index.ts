@@ -49,7 +49,7 @@ class ExceptionPlugin implements IPlugin {
     } 
     // get exception
     else if(e) {
-      code = e.code || (e.response && e.response.code)s;
+      code = e.code || (e.response && e.response.code);
       info = e;
     } 
     else if (res && this.config.bizExceptionCode) {
