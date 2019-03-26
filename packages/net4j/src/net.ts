@@ -25,7 +25,7 @@ class Net4j {
   private initPlugins() {
     if (this.pluginsList) {
       for (const plugin of this.pluginsList) {
-        this.lib = initPlugin(plugin, this.lib);
+        this.lib = initPlugin(this.instance, plugin, this.lib);
       }
     }
   }
