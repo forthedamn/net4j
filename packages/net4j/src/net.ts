@@ -1,4 +1,5 @@
-import { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
+import { AxiosInstance } from 'axios';
 
 import { IGetRoute, IConfig, INetConfig, IPlugin, METHOD, IDeleteRoute, IPostRoute, IPutRoute, ILib } from './index';
 import { requestHandler } from './utils';
@@ -7,11 +8,13 @@ import { initPlugin, defaultPlugin } from './plugins';
 class Net4j {
   private pluginsList: IPlugin[];
   private lib: ILib;
-  private axiosConfig: AxiosRequestConfig;
+  private instance: AxiosInstance;
 
   constructor(config: INetConfig = {}) {
     this.lib = config.lib || {};
-    this.axiosConfig = config.globalAxiosConfig || {};
+    this.instance = axios.create(
+      config.globalAxiosConfig || {}
+    );
     const pluginsList = defaultPlugin.concat(config.plugins || []);
     if (pluginsList && pluginsList.length > 0) {
       this.pluginsList = pluginsList;
@@ -39,8 +42,7 @@ class Net4j {
 
   private async request(method: METHOD, url: string | number, config?: IConfig, data?: any) {
     url = this.handleRestful(url, config);
-    config = Object.assign({}, this.axiosConfig, config);
-    return await requestHandler(method, url as string, config, data);
+    return await requestHandler(this.instance, method, url as string, config, data);
   }
 
   async get<URL extends keyof IGetRoute>(url: URL, config?: IConfig<IGetRoute[URL]['request']>): Promise<IGetRoute[URL]['response']> {
