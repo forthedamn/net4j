@@ -14,7 +14,7 @@ interface IConfig {
   defaultExceptionText?: string;
   codeMsgMap?: (code?: number) => string | codeFunc;
   // Get business exception code
-  bizExceptionCode?: (res: AxiosResponse) => { code?: string | number };
+  bizExceptionCode?: (res: AxiosResponse) => { code?: string | number } | undefined;
 }
 
 class ExceptionPlugin implements IPlugin {
