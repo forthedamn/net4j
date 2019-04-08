@@ -7,12 +7,12 @@ export interface PluginConfig extends RootConfig {
   defaultExceptionText?: string;
 }
 
-type codeFunc = (e?: AxiosResponse) => void;
+type codeFunc = (e?: AxiosResponse) => void | string;
 
 interface IConfig {
   tipsComponent?: (code?: number, text?: string) => void;
   defaultExceptionText?: string;
-  codeMsgMap?: (code?: number) => string | codeFunc;
+  codeMsgMap?: (code?: number) => codeFunc;
   // Get business exception code
   bizExceptionCode?: (res: AxiosResponse) => { code?: string | number } | undefined;
 }
