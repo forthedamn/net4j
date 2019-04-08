@@ -31,7 +31,12 @@ class ExceptionPlugin implements IPlugin {
       return Promise.reject(e);
     }
     // For more flexible , every request can reset defaultExceptionText.
-    this.exceptionText = (config.actionName || '') + (config.defaultExceptionText || this.config.defaultExceptionText || 'fail');
+    // When request with defaultExceptionText:null, tipComponent will not show
+    if (config.defaultExceptionText === null) {
+      this.exceptionText = null;
+    } else {
+      this.exceptionText = (config.actionName || '') + (config.defaultExceptionText || this.config.defaultExceptionText || 'fail');
+    }
     return config;
   }
 
@@ -42,23 +47,29 @@ class ExceptionPlugin implements IPlugin {
    */
   afterRequest(e, res: AxiosResponse) {
     let code, errorHandler, info;
+
+    // When request with defaultExceptionText:null, tipComponent will not show
+    if (this.exceptionText === null) {
+      return res;
+    }
+    
     // http error code
     if (res && res.status >= MIN_EXCEPTION_HTTP_CODE) {
       code = res.status;
       info = res;
-    } 
+    }
     // get exception
     else if(e) {
       code = e.code || (e.response && e.response.code);
       info = e;
-    } 
+    }
     else if (res && this.config.bizExceptionCode) {
       const { code: _code } = this.config.bizExceptionCode(res) || {code: undefined };
       if (_code !== undefined) {
         code = _code;
         info = res;
       }
-    } 
+    }
     else {
       return res
     }
