@@ -44,7 +44,7 @@ const net = new Net();
 
 // Type merge,so that /api/v2/goods will be typed
 declare module 'net4j' {
-  interface IGetRoute {
+  interface GetRoute {
     '/api/v2/goods': {
       request: {
         id: number
@@ -72,7 +72,7 @@ const net = new Net();
 
 // Type merge,so that /api/v2/goods/:id will be typed
 declare module 'net4j' {
-  interface IGetRoute {
+  interface GetRoute {
     '/api/v2/goods/:id': {
       response: {
         data: {
@@ -101,10 +101,10 @@ import NetException, { ExceptionConfig } from 'net4j-exception-plugin';
 
 declare module 'net4j' {
   // Merge plugin config to net4j config,then you can use it in every requst in net4j
-  interface IConfig extends SuccessConfig, LoadingConfig, ExceptionConfig {};
+  interface Config extends SuccessConfig, LoadingConfig, ExceptionConfig {};
 
   // Type merge,so that /api/v2/goods will be typed
-  interface IGetRoute {
+  interface GetRoute {
     '/api/v2/goods': {
       request: {
         id: number
@@ -167,10 +167,10 @@ const result = await net.get('/api/v2/goods', {params: {id: 123}});
 ### How to write a plugin
 
 ```ts
-export interface IPlugin {
-  beforeRequest?(e?: Error, config?: AxiosRequestConfig, lib?: ILib): IConfig | Promise<IConfig>;
+export interface Plugin {
+  beforeRequest?(e?: Error, config?: AxiosRequestConfig, lib?: Lib): Config | Promise<Config>;
   // Inject libs to whole request, so other plugins use these libs 
   applyLib?(lib: { [key: string]: any}): { [key: string]: any};
-  afterRequest?<T = any>(e?: Error, response?: T, lib?: ILib): T | Promise<AxiosResponse<Error>>;
+  afterRequest?<T = any>(e?: Error, response?: T, lib?: Lib): T | Promise<AxiosResponse<Error>>;
 }
 ```
