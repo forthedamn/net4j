@@ -28,9 +28,11 @@ class SuccessPlugin implements IPlugin{
     if (e) {
       return Promise.reject(e);
     }
-    setTimeout(()=> {
-      this.config.tipsComponent(this.successText)
-    });
+    if (res && res.data && res.data.code === 0) {
+      setTimeout(()=> {
+        this.config.tipsComponent(this.successText)
+      });
+    }
     return res;
   }
 }
