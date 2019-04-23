@@ -1,21 +1,21 @@
-import { IPlugin, IConfig as RootConfig } from 'net4j';
+import { Plugin, Config as RootConfig } from 'net4j';
 import { AxiosResponse } from 'axios';
 
 export interface PluginConfig extends RootConfig {
   actionName?: string;
   defaultSuccessText?: string;
 }
-interface IConfig {
+interface Config {
   tipsComponent: (text?: string) => void;
   defaultSuccessText?: string;
   isShow: (res: any) => boolean;
 }
 
-class SuccessPlugin implements IPlugin{
-  private config: IConfig;
+class SuccessPlugin implements Plugin{
+  private config: Config;
   private successText: string;
 
-  constructor(config: IConfig) {
+  constructor(config: Config) {
     this.config = config;
   }
 

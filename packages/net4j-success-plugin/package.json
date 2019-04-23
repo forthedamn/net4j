@@ -1,6 +1,6 @@
 {
   "name": "net4j-success-plugin",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Handle every request when success",
   "main": "build/index.js",
   "scripts": {
@@ -13,6 +13,6 @@
   "author": "forthedamn",
   "license": "ISC",
   "dependencies": {
-    "net4j": "^0.0.7"
+    "net4j": "latest"
   }
 }

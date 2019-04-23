@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"@types/axios@^0.14.0":
-  version "0.14.0"
-  resolved "http://r.npm.sankuai.com/@types/axios/download/@types/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
-  integrity sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=
-  dependencies:
-    axios "*"
-
 axios@*, axios@^0.18.0:
   version "0.18.0"
   resolved "http://r.npm.sankuai.com/axios/download/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
@@ -41,9 +34,17 @@ ms@^2.1.1:
   resolved "http://r.npm.sankuai.com/ms/download/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha1-MKWGTrPrsKZvLr5tcnrwagnYbgo=
 
-net4j@^0.0.7:
-  version "0.0.7"
-  resolved "http://r.npm.sankuai.com/net4j/download/net4j-0.0.7.tgz#49cac49c0dcee0eb778dc3125ad915c82d13eefc"
-  integrity sha1-ScrEnA3O4Ot3jcMSWtkVyC0T7vw=
+net4j-log-plugin@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/net4j-log-plugin/-/net4j-log-plugin-1.0.8.tgz#ac06476c1e99b661a197c6c1a293e61d4ca9e074"
+  integrity sha512-Ced8T0S/xOLIWVW1Ec3OK8PhGLW+1SlKxWOfSQfP+eoCI/W/EzIXdfewfIjh4hN+yuqNlwQTpGBtIT8WipaCcQ==
+  dependencies:
+    net4j latest
+
+net4j@latest:
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/net4j/-/net4j-1.1.4.tgz#9ea77d21d2c342efee97054f7b70b21cce1b97ba"
+  integrity sha512-MWh+vPXlA+7JAS/N7mqTcml0n07rXAh5VpS3l4mLBqdVTPSHXepwzSac180YekwUdsG6GzVCDwRPfxaaLVKdtQ==
   dependencies:
     axios "^0.18.0"
+    net4j-log-plugin "^1.0.8"

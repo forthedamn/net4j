@@ -437,7 +437,7 @@
   dependencies:
     "@lerna/package" "3.13.0"
     "@lerna/validation-error" "3.13.0"
-    cosmiconfig "^5.1.0"
+    cosmConfig "^5.1.0"
     dedent "^0.7.0"
     dot-prop "^4.2.0"
     glob-parent "^3.1.0"
@@ -1346,9 +1346,9 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   resolved "http://r.npm.sankuai.com/core-util-is/download/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
-cosmiconfig@^5.1.0:
+cosmConfig@^5.1.0:
   version "5.1.0"
-  resolved "http://r.npm.sankuai.com/cosmiconfig/download/cosmiconfig-5.1.0.tgz#6c5c35e97f37f985061cdf653f114784231185cf"
+  resolved "http://r.npm.sankuai.com/cosmConfig/download/cosmConfig-5.1.0.tgz#6c5c35e97f37f985061cdf653f114784231185cf"
   integrity sha1-bFw16X83+YUGHN9lPxFHhCMRhc8=
   dependencies:
     import-fresh "^2.0.0"

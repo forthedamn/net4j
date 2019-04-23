@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-axios@^0.18.0:
+axios@*, axios@^0.18.0:
   version "0.18.0"
   resolved "https://registry.npmjs.org/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
   integrity sha1-MtU+SFHv3AoRmTts0AB4nXDAUQI=
@@ -34,9 +34,17 @@ ms@^2.1.1:
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
-net4j@0.0.14:
-  version "0.0.14"
-  resolved "https://registry.npmjs.org/net4j/-/net4j-0.0.14.tgz#1ccd5b14bd4f4dec3adaf15a4d36462be8a03ad9"
-  integrity sha512-ECIicURGuHq0QHQMFIiKfTdUu8HZYYnBJO6AgwHq1NKXSudC12AOhFnbZ14+r7bbqV3rCiwiCk0bU2vYigs6BQ==
+net4j-log-plugin@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/net4j-log-plugin/-/net4j-log-plugin-1.0.8.tgz#ac06476c1e99b661a197c6c1a293e61d4ca9e074"
+  integrity sha512-Ced8T0S/xOLIWVW1Ec3OK8PhGLW+1SlKxWOfSQfP+eoCI/W/EzIXdfewfIjh4hN+yuqNlwQTpGBtIT8WipaCcQ==
+  dependencies:
+    net4j latest
+
+net4j@latest:
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/net4j/-/net4j-1.1.4.tgz#9ea77d21d2c342efee97054f7b70b21cce1b97ba"
+  integrity sha512-MWh+vPXlA+7JAS/N7mqTcml0n07rXAh5VpS3l4mLBqdVTPSHXepwzSac180YekwUdsG6GzVCDwRPfxaaLVKdtQ==
   dependencies:
     axios "^0.18.0"
+    net4j-log-plugin "^1.0.8"

@@ -6,7 +6,7 @@ export default Net;
 export interface IPlugin {
   beforeRequest?(e?: Error, config?: AxiosRequestConfig, lib?: ILib): IConfig | Promise<IConfig>;
   // 向整个 net 体系注入依赖
-  applyLib?<T>(lib: { [key: string]: T}): { [key: string]: T};
+  applyLib?(lib: { [key: string]: any}): { [key: string]: any};
   afterRequest?<T = any>(e?: Error, response?: AxiosResponse<T>, lib?: ILib): AxiosResponse<T> | Promise<AxiosResponse<Error>>;
 }
 
