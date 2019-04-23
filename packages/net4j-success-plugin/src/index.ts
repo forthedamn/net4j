@@ -7,6 +7,7 @@ export interface PluginConfig extends RootConfig {
 interface IConfig {
   tipsComponent: (text?: string) => void;
   defaultSuccessText?: string;
+  isShow: (res: any) => boolean;
 }
 
 class SuccessPlugin implements IPlugin{
@@ -28,9 +29,11 @@ class SuccessPlugin implements IPlugin{
     if (e) {
       return Promise.reject(e);
     }
-    setTimeout(()=> {
-      this.config.tipsComponent(this.successText)
-    });
+    if (this.config.isShow(res)) {
+      setTimeout(()=> {
+        this.config.tipsComponent(this.successText)
+      });
+    }
     return res;
   }
 }
