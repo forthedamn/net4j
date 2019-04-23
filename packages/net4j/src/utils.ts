@@ -1,11 +1,10 @@
-import { METHOD, IConfig, IPlugin, LifeTimeEnum } from './index';
 import { AxiosInstance } from 'axios';
+import { METHOD, Config } from './index';
 
 const DEFAULT_TIMEOUT = 10000;
 
 // 统一处理 ajax 结果
-export const requestHandler = async (instance: AxiosInstance, action: METHOD, url: string, config: IConfig, reqdata: any = {}) => {
-  config = config || {};
+export const requestHandler = async <T = any>(instance: AxiosInstance, action: METHOD, url: string, config: Config = {}, reqdata:T) => {
   config.timeout = (config && config.timeout) || DEFAULT_TIMEOUT;
   let ret;
   switch(action) {
@@ -25,7 +24,4 @@ export const requestHandler = async (instance: AxiosInstance, action: METHOD, ur
       break;
   };
   return ret;
-}
-
-const pluginWalker = (lifeTime: LifeTimeEnum, pluginsList: IPlugin) => {
 }

@@ -1,25 +1,36 @@
 import { IPlugin, IConfig as RootConfig } from 'net4j';
-import { AxiosResponse } from 'axios';
+import { AxiosResponse, AxiosRequestConfig } from 'axios';
 
-type Fomatter = (res: AxiosResponse) => any;
+type Formatter = (res: AxiosResponse) => any;
+type PreFormatter = (config: RootConfig) => any;
 
 export interface FormatterConfig extends RootConfig {
-  formatter?: Fomatter,
+  formatter?: Formatter,
+  preFormatter?: PreFormatter,
 }
 
 class FormatterPlugin implements IPlugin {
-  private formatter: Fomatter;
+  private formatter: Formatter | undefined;
+  private preFormatter: PreFormatter | undefined;
 
   constructor(config: FormatterConfig = {}) {
     this.formatter = config.formatter;
+    this.preFormatter = config.preFormatter;
   }
 
-  afterRequest(e, response) {
+  beforeRequest(_e: Error, config: AxiosRequestConfig) {
+    if (this.preFormatter) {
+      return this.preFormatter(config);
+    }
+    return config;
+  }
+
+  afterRequest<T = any>(e: Error, response: T) {
     if (e) {
       return Promise.reject(e);
     }
     if (this.formatter && typeof this.formatter === 'function') {
-      return this.formatter(response);
+      return this.formatter(response as any);
     }
     return response;
   }

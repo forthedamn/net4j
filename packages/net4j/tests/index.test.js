@@ -22,17 +22,10 @@ describe('net4j', () => {
     sandbox.restore();
   });
 
-  it('origin', (done) => {
+  it('Request with plugin', (done) => {
     sandbox.stub(axios, 'get').callsFake(() => {
       return Promise.resolve('test');
     });
     net.get('test').then(res => expect(res).toEqual('test')).then(done);
   });
-
-  it('plugin', (done) => {
-    sandbox.stub(axios, 'get').callsFake(() => {
-      return Promise.resolve('test');
-    });
-    net.get('test').then(res => expect(res).toEqual('test')).then(done);
-  })
 });

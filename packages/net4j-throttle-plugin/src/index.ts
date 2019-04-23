@@ -1,10 +1,11 @@
 import { IPlugin, IConfig as RootConfig } from 'net4j';
+import axios, { AxiosResponse } from 'axios';
+
+const CancelToken = axios.CancelToken;
+const isCancel = axios.isCancel;
 
 // default wait 1 second
 const DEFAULT_WAIT = 1000;
-
-// default throttle code in error
-const DEFAULT_CODE = 'THROTTLE_CODE';
 
 // GC when reqList keys bigger than threshold
 const GC_THRESHOLD = 20;
@@ -39,17 +40,20 @@ class ThrottlePlugin implements IPlugin {
     this.reqList = {};
   }
 
-  beforeRequest(e, config: PluginConfig) {
+  beforeRequest(e: Error, config: PluginConfig) {
     if (config && config.throttleConfig && config.throttleConfig.enable === false) {
       return config;
     }
-    const token = `${config.url}#${config.method}#${JSON.stringify(config.params)}#${JSON.stringify(config.data)}`;
+    const token = `${config.url}#${config.method}#${JSON.stringify(config.params)}#${JSON.stringify(config.data)}#${(location || {href: ''}).href}`;
     const request = this.reqList[token];
     if (request) {
       if (new Date().getTime() - request.startTime <= this.defaultWait) {
-        const e: IThrottleError = new Error('operaion too quick');
-        e.code = DEFAULT_CODE;
-        throw e;
+        return {
+          ...config,
+          cancelToken: new CancelToken((cancel) => {
+              cancel('[throttle]Too Many Requests');
+          })
+      }
       }
     } else {
       this.GC();
@@ -60,10 +64,13 @@ class ThrottlePlugin implements IPlugin {
     return config;
   }
 
-  afterRequest(e, response) {
-    if (e && e.code === DEFAULT_CODE) {
-      console.log('[net4j-throttle]Been throttled')
-      return Promise.resolve(undefined);
+  afterRequest(e?: Error, response?: AxiosResponse) {
+    if (isCancel(e)) {
+      console.log('[net4j-throttle]Been throttled');
+      return Promise.resolve({
+        status: 429,
+        statusText: 'Too Many Requests',
+      });
     } else if (e) {
       return Promise.reject(e);
     }
