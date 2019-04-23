@@ -1,4 +1,4 @@
-import { IPlugin, IConfig as RootConfig } from 'net4j';
+import { Plugin, Config as RootConfig } from 'net4j';
 import { AxiosResponse, AxiosRequestConfig } from 'axios';
 
 type Formatter = (res: AxiosResponse) => any;
@@ -9,7 +9,7 @@ export interface FormatterConfig extends RootConfig {
   preFormatter?: PreFormatter,
 }
 
-class FormatterPlugin implements IPlugin {
+class FormatterPlugin implements Plugin {
   private formatter: Formatter | undefined;
   private preFormatter: PreFormatter | undefined;
 

@@ -9,7 +9,7 @@ import NetSuccess, { PluginConfig } from 'net4j-success-plugin';
 
 // Merge plugin config to net4j config,then you can use it in every requst in net4j
 declare module 'net4j' {
-  interface IConfig extends PluginConfig {}
+  interface Config extends PluginConfig {}
 }
 
 const net = new Net({

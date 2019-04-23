@@ -1,15 +1,16 @@
-import { IPlugin, IConfig as RootConfig } from 'net4j';
+import { Plugin, Config as RootConfig } from 'net4j';
 import { AxiosResponse } from 'axios';
 
 const MIN_EXCEPTION_HTTP_CODE = 400;
 
 export interface PluginConfig extends RootConfig {
   defaultExceptionText?: string;
+  actionName?: string;
 }
 
 type codeFunc = (e?: AxiosResponse) => void | string;
 
-interface IConfig {
+interface Config {
   tipsComponent?: (code?: number, text?: string) => void;
   defaultExceptionText?: string;
   codeMsgMap?: (code?: number) => codeFunc;
@@ -17,11 +18,11 @@ interface IConfig {
   bizExceptionCode?: (res: AxiosResponse) => { code?: string | number } | undefined;
 }
 
-class ExceptionPlugin implements IPlugin {
-  private config: IConfig;
+class ExceptionPlugin implements Plugin {
+  private config: Config;
   private exceptionText: string;
 
-  constructor(config: IConfig = {}) {
+  constructor(config: Config = {}) {
     this.config = config;
   }
 

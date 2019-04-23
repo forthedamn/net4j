@@ -9,7 +9,7 @@ import NetException, { PluginConfig } from 'net4j-exception-plugin';
 
 // Merge plugin config to net4j config,then you can use it in every requst in net4j
 declare module 'net4j' {
-  interface IConfig extends PluginConfig {}
+  interface Config extends PluginConfig {}
 }
 
 // Code to message

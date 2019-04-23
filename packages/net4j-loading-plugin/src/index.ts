@@ -1,20 +1,20 @@
-import { IPlugin, IConfig as RootConfig } from 'net4j';
+import { Plugin, Config as RootConfig } from 'net4j';
 
 export interface PluginConfig extends RootConfig {
   actionName?: string;
   defaultLoadingText?: string;
 }
 
-interface IConfig {
+interface Config {
   loading: (text?: string) => () => void;
   defaultLoadingText?: string;
 }
 
-class LoadingPlugin implements IPlugin{
-  private config: IConfig;
+class LoadingPlugin implements Plugin{
+  private config: Config;
   private loadingClose: () => void;
 
-  constructor(config: IConfig) {
+  constructor(config: Config) {
     this.config = config;
     this.loadingClose = () => {};
   }

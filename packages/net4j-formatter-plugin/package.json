@@ -13,7 +13,7 @@
   "author": "forthedamn",
   "license": "MIT",
   "dependencies": {
-    "net4j": "^0.0.7"
+    "net4j": "latest"
   },
   "devDependencies": {
     "axios": "*"

@@ -1,4 +1,4 @@
-import { IPlugin } from 'net4j';
+import { Plugin } from 'net4j';
 
 export interface ILib {
   log?: ILog
@@ -9,14 +9,14 @@ interface ILog {
   error: (...args) => void;
 }
 
-interface IConfig {
+interface Config {
   log: ILog;
 }
 
-class LogPlugin implements IPlugin{
-  private config: IConfig;
+class LogPlugin implements Plugin{
+  private config: Config;
 
-  constructor(config: IConfig) {
+  constructor(config: Config) {
     this.config = config;
   }
 

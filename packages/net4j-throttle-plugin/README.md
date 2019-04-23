@@ -10,7 +10,7 @@ import NetThrottle, { ThrottleConfig } from 'net4j-throttle-plugin';
 
 // Merge plugin config to net4j config,then you can use it in every requst in net4j
 declare module 'net4j' {
-  interface IConfig extends ThrottleConfig {}
+  interface Config extends ThrottleConfig {}
 }
 
 const net = new Net({
