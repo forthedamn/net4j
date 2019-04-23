@@ -16,16 +16,19 @@ export interface GetRoute {[key: string]: {
   response?: any;
 }}
 
+// Route 类型会被回填，这里无需关心类型
 export interface PostRoute {[key: string]: {
   request?: any;
   response?: any;
 }}
 
+// Route 类型会被回填，这里无需关心类型
 export interface PutRoute {[key: string]: {
   request?: any;
   response?: any;
 }}
 
+// Route 类型会被回填，这里无需关心类型
 export interface DeleteRoute {[key: string]: {
   request?: any;
   response?: any;

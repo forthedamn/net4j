@@ -29,19 +29,19 @@ class Net4j {
     }
   }
 
-  private handleRestful(url: string | number, config?: Config) {
+  private handleRestful(url: string, config?: Config) {
     if (!config || !config.restful) return url;
     // 替换 restful 字段
     const restRE = /\/:(\w+)/g;
-    return String(url).replace(restRE, (_, key) => {
+    return url.replace(restRE, (_, key) => {
       const value = config.restful![key];
       return '/' + ((value !== undefined) ? encodeURIComponent(value) : (':' + key));
     });
   }
 
   private async request<T>(method: METHOD, url: string | number, config?: Config, data?: T) {
-    url = this.handleRestful(url, config);
-    return await requestHandler(this.instance, method, url as string, config, data);
+    url = this.handleRestful(String(url), config);
+    return await requestHandler(this.instance, method, url, config, data);
   }
 
   async get<URL extends keyof GetRoute>(url: URL, config?: Config<GetRoute[URL]['request']>): Promise<GetRoute[URL]['response']> {
