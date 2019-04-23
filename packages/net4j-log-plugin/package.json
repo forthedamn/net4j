@@ -1,6 +1,6 @@
 {
   "name": "net4j-log-plugin",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Log for request",
   "main": "build/index.js",
   "scripts": {

@@ -1,6 +1,6 @@
 {
   "name": "net4j-success-plugin",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Handle every request when success",
   "main": "build/index.js",
   "scripts": {
