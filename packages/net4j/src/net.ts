@@ -5,7 +5,7 @@ import { initPlugin, defaultPlugin } from './plugins';
 import { IGetRoute, IConfig, INetConfig, IPlugin, METHOD, IDeleteRoute,  IPostRoute,  IPutRoute, ILib } from './index';
 
 class Net4j {
-  private pluginsList?: Plugin[];
+  private pluginsList?: IPlugin[];
   private lib: ILib;
   private instance: AxiosInstance;
 

@@ -7,7 +7,7 @@ export interface IPlugin {
   beforeRequest?(e?: Error, config?: AxiosRequestConfig, lib?: ILib): IConfig | Promise<IConfig>;
   // 向整个 net 体系注入依赖
   applyLib?(lib: { [key: string]: any}): { [key: string]: any};
-  afterRequest?<T = any>(e?: Error, response?: AxiosResponse<T>, lib?: ILib): AxiosResponse<T> | Promise<AxiosResponse<Error>>;
+  afterRequest?(e?: Error, response?: AxiosResponse, lib?: ILib): any;
 }
 
 // Route 类型会被回填，这里无需关心类型
@@ -37,7 +37,7 @@ export interface IDeleteRoute {[key: string]: {
 export interface ILib { [key: string]: Function }
 
 export interface INetConfig {
-  plugins?: Array<Plugin>,
+  plugins?: Array<IPlugin>,
   lib?: ILib;
   globalAxiosConfig?: IConfig,
 }

@@ -2247,6 +2247,21 @@ needle@^2.2.1:
     iconv-lite "^0.4.4"
     sax "^1.2.4"
 
+net4j-log-plugin@^1.0.9, net4j-log-plugin@latest:
+  version "1.0.9"
+  resolved "http://r.npm.sankuai.com/net4j-log-plugin/download/net4j-log-plugin-1.0.9.tgz#1aadf1086e04eb60a80034e9c2944d02aa7a95b3"
+  integrity sha1-Gq3xCG4E62CoADTpwpRNAqp6lbM=
+  dependencies:
+    net4j latest
+
+net4j@latest:
+  version "1.1.5"
+  resolved "http://r.npm.sankuai.com/net4j/download/net4j-1.1.5.tgz#eb193d0c792fa83c0f445c99e1c2596bab67fe5a"
+  integrity sha1-6xk9DHkvqDwPRFyZ4cJZa6tn/lo=
+  dependencies:
+    axios "^0.18.0"
+    net4j-log-plugin "^1.0.9"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.npmjs.org/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
