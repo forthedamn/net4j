@@ -1,10 +1,10 @@
 import { AxiosInstance } from 'axios';
-import { METHOD, Config } from './index';
+import { METHOD, IConfig } from './index';
 
 const DEFAULT_TIMEOUT = 10000;
 
 // 统一处理 ajax 结果
-export const requestHandler = async <T = any>(instance: AxiosInstance, action: METHOD, url: string, config: Config = {}, reqdata:T) => {
+export const requestHandler = async <T = any>(instance: AxiosInstance, action: METHOD, url: string, config: IConfig = {}, reqdata:T) => {
   config.timeout = (config && config.timeout) || DEFAULT_TIMEOUT;
   let ret;
   switch(action) {

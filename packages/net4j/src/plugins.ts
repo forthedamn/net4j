@@ -1,9 +1,9 @@
 import { AxiosInstance } from 'axios';
 import NetLog from 'net4j-log-plugin';
 
-import { Plugin, Lib } from './index';
+import { IPlugin, ILib } from './index';
 
-export const initPlugin = (instance: AxiosInstance, plugin: Plugin, lib: Lib) => {
+export const initPlugin = (instance: AxiosInstance, plugin: IPlugin, lib: ILib) => {
   if (plugin.beforeRequest) {
     instance.interceptors.request.use((config) => {
       return plugin.beforeRequest!(undefined, config, lib);
@@ -27,7 +27,7 @@ export const initPlugin = (instance: AxiosInstance, plugin: Plugin, lib: Lib) =>
 }
 
 // 内置插件
-export const defaultPlugin: Plugin[] = [
+export const defaultPlugin: IPlugin[] = [
   new NetLog({
     log: {
       info: (...args) => {

@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
-    "net4j-log-plugin": "^1.0.7"
+    "net4j-log-plugin": "latest"
   },
   "devDependencies": {
     "jest": "^24.1.0",

@@ -3,47 +3,47 @@ import Net from './net';
 
 export default Net;
 
-export interface Plugin {
-  beforeRequest?(e?: Error, config?: AxiosRequestConfig, lib?: Lib): Config | Promise<Config>;
+export interface IPlugin {
+  beforeRequest?(e?: Error, config?: AxiosRequestConfig, lib?: ILib): IConfig | Promise<IConfig>;
   // 向整个 net 体系注入依赖
   applyLib?<T>(lib: { [key: string]: T}): { [key: string]: T};
-  afterRequest?<T = any>(e?: Error, response?: AxiosResponse<T>, lib?: Lib): AxiosResponse<T> | Promise<AxiosResponse<Error>>;
+  afterRequest?<T = any>(e?: Error, response?: AxiosResponse<T>, lib?: ILib): AxiosResponse<T> | Promise<AxiosResponse<Error>>;
 }
 
 // Route 类型会被回填，这里无需关心类型
-export interface GetRoute {[key: string]: {
+export interface IGetRoute {[key: string]: {
   request?: any;
   response?: any;
 }}
 
 // Route 类型会被回填，这里无需关心类型
-export interface PostRoute {[key: string]: {
+export interface IPostRoute {[key: string]: {
   request?: any;
   response?: any;
 }}
 
 // Route 类型会被回填，这里无需关心类型
-export interface PutRoute {[key: string]: {
+export interface IPutRoute {[key: string]: {
   request?: any;
   response?: any;
 }}
 
 // Route 类型会被回填，这里无需关心类型
-export interface DeleteRoute {[key: string]: {
+export interface IDeleteRoute {[key: string]: {
   request?: any;
   response?: any;
 }}
 
-export interface Lib { [key: string]: Function }
+export interface ILib { [key: string]: Function }
 
-export interface NetConfig {
+export interface INetConfig {
   plugins?: Array<Plugin>,
-  lib?: Lib;
-  globalAxiosConfig?: Config,
+  lib?: ILib;
+  globalAxiosConfig?: IConfig,
 }
 
 // config 只需要在网络请求是回调类型即可，其他情况无需关注类型
-export interface Config<T = any> extends AxiosRequestConfig {
+export interface IConfig<T = any> extends AxiosRequestConfig {
   data?: T;
   params?: T;
   restful?: {[key: string]: string};
