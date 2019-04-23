@@ -7,7 +7,7 @@ export interface PluginConfig extends RootConfig {
 interface IConfig {
   tipsComponent: (text?: string) => void;
   defaultSuccessText?: string;
-  isShow?: (res: any) => boolean;
+  isShow: (res: any) => boolean;
 }
 
 class SuccessPlugin implements IPlugin{
