@@ -1,6 +1,6 @@
 {
   "name": "net4j",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Pluggable & Promise based HTTP client for the browser and node.js",
   "main": "build/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
-    "net4j-log-plugin": "^1.0.8"
+    "net4j-log-plugin": "^1.0.9"
   },
   "devDependencies": {
     "jest": "^24.1.0",
