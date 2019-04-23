@@ -7,7 +7,7 @@ export interface Plugin {
   beforeRequest?(e?: Error, config?: AxiosRequestConfig, lib?: Lib): Config | Promise<Config>;
   // 向整个 net 体系注入依赖
   applyLib?<T>(lib: { [key: string]: T}): { [key: string]: T};
-  afterRequest?<T >(e?: Error, response?: AxiosResponse<T>, lib?: Lib): AxiosResponse<T> | Promise<AxiosResponse<Error>>;
+  afterRequest?<T = any>(e?: Error, response?: AxiosResponse<T>, lib?: Lib): AxiosResponse<T> | Promise<AxiosResponse<Error>>;
 }
 
 // Route 类型会被回填，这里无需关心类型

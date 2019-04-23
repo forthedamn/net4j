@@ -1,4 +1,5 @@
 import { IPlugin, IConfig as RootConfig } from 'net4j';
+import { AxiosResponse } from 'axios';
 
 export interface PluginConfig extends RootConfig {
   actionName?: string;
@@ -18,14 +19,14 @@ class SuccessPlugin implements IPlugin{
     this.config = config;
   }
 
-  beforeRequest(e, config: PluginConfig){
+  beforeRequest(e: Error, config: PluginConfig){
     // For more flexible , every request can reset successText.
     this.successText = (config.actionName || '') +
       (config.defaultSuccessText || this.config.defaultSuccessText || 'success');
     return config;
   }
 
-  afterRequest(e, res) {
+  afterRequest(e: Error, res) {
     if (e) {
       return Promise.reject(e);
     }
