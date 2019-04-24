@@ -34,17 +34,17 @@ ms@^2.1.1:
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
-net4j-log-plugin@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/net4j-log-plugin/-/net4j-log-plugin-1.0.8.tgz#ac06476c1e99b661a197c6c1a293e61d4ca9e074"
-  integrity sha512-Ced8T0S/xOLIWVW1Ec3OK8PhGLW+1SlKxWOfSQfP+eoCI/W/EzIXdfewfIjh4hN+yuqNlwQTpGBtIT8WipaCcQ==
+net4j-log-plugin@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.npmjs.org/net4j-log-plugin/-/net4j-log-plugin-1.0.11.tgz#9187dad69b2d609741c33d86060e6e08392931a1"
+  integrity sha512-X6Po8QT9F974xaNthl4j4n0yWLmKTDHyXR6h6A6IjrDGuYfNH4sCIYwnFUgB0thxvG2z2twPISZDTzj5Lo8kcw==
   dependencies:
-    net4j latest
+    net4j "^1.1.8"
 
-net4j@latest:
-  version "1.1.4"
-  resolved "https://registry.npmjs.org/net4j/-/net4j-1.1.4.tgz#9ea77d21d2c342efee97054f7b70b21cce1b97ba"
-  integrity sha512-MWh+vPXlA+7JAS/N7mqTcml0n07rXAh5VpS3l4mLBqdVTPSHXepwzSac180YekwUdsG6GzVCDwRPfxaaLVKdtQ==
+net4j@^1.1.8, net4j@latest:
+  version "1.1.9"
+  resolved "https://registry.npmjs.org/net4j/-/net4j-1.1.9.tgz#ef9082f92df40e8245efe7801639125ddb11c558"
+  integrity sha512-Z/CGffXIaPewxoiCdrW3kNZHBLj/P2MyAmrpdIlFHRNoBEmrpFY7rkcuIvMPI8S0KYwICqxTXNYyVcIaAI3l2g==
   dependencies:
     axios "^0.18.0"
-    net4j-log-plugin "^1.0.8"
+    net4j-log-plugin "^1.0.11"

@@ -1,4 +1,4 @@
-import { Plugin, Config as RootConfig } from 'net4j';
+import { IPlugin, IConfig as RootConfig } from 'net4j';
 import axios, { AxiosResponse } from 'axios';
 
 const CancelToken = axios.CancelToken;
@@ -31,7 +31,7 @@ export interface PluginConfig extends RootConfig {
 
 interface Config extends IThrottleConfig {}
 
-class ThrottlePlugin implements Plugin {
+class ThrottlePlugin implements IPlugin {
   private reqList: IReq;
   private defaultWait: number;
 

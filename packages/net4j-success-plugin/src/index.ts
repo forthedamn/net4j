@@ -1,5 +1,4 @@
-import { Plugin, Config as RootConfig } from 'net4j';
-import { AxiosResponse } from 'axios';
+import { IPlugin, IConfig as RootConfig } from 'net4j';
 
 export interface PluginConfig extends RootConfig {
   actionName?: string;
@@ -11,7 +10,7 @@ interface Config {
   isShow: (res: any) => boolean;
 }
 
-class SuccessPlugin implements Plugin{
+class SuccessPlugin implements IPlugin{
   private config: Config;
   private successText: string;
 

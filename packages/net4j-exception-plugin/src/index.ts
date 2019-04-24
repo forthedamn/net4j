@@ -1,4 +1,4 @@
-import { Plugin, Config as RootConfig } from 'net4j';
+import { IPlugin, IConfig as RootConfig } from 'net4j';
 import { AxiosResponse } from 'axios';
 
 const MIN_EXCEPTION_HTTP_CODE = 400;
@@ -18,7 +18,7 @@ interface Config {
   bizExceptionCode?: (res: AxiosResponse) => { code?: string | number } | undefined;
 }
 
-class ExceptionPlugin implements Plugin {
+class ExceptionPlugin implements IPlugin {
   private config: Config;
   private exceptionText: string;
 
