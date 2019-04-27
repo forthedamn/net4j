@@ -1,6 +1,6 @@
 import { IPlugin, IConfig as RootConfig } from 'net4j';
 
-export interface IPluginConfig extends RootConfig {
+export interface PluginConfig extends RootConfig {
   actionName?: string;
   defaultLoadingText?: string;
 }
@@ -19,7 +19,7 @@ class LoadingPlugin implements IPlugin{
     this.loadingClose = () => {};
   }
 
-  beforeRequest(e: Error, config: IPluginConfig) {
+  beforeRequest(e: Error, config: PluginConfig) {
     // For more flexible , every request can reset laodingText.
     const loadingText = (config.actionName || '') +
       (config.defaultLoadingText || this.config.defaultLoadingText || 'loading');

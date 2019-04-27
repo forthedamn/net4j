@@ -16,7 +16,7 @@ interface IThrottleConfig {
 }
 
 interface IThrottleError extends Error {
-  code?: string;
+  code?: number;
 }
 
 interface IReq {
@@ -51,7 +51,7 @@ class ThrottlePlugin implements IPlugin {
         return {
           ...config,
           cancelToken: new CancelToken((cancel) => {
-              cancel('[throttle]Too Many Requests');
+              cancel(`[throttle]Too Many Requests! method: ${config.method}, url:${config.url}`);
           })
       }
       }
@@ -64,9 +64,10 @@ class ThrottlePlugin implements IPlugin {
     return config;
   }
 
-  afterRequest(e?: Error, response?: AxiosResponse) {
+  afterRequest(e?: IThrottleError, response?: AxiosResponse) {
     if (isCancel(e)) {
-      console.log('[net4j-throttle]Been throttled');
+      e.code = 429;
+      console.warn(`${e.message}`);
       return Promise.resolve({
         status: 429,
         statusText: 'Too Many Requests',

@@ -41,7 +41,7 @@ class Net4j {
 
   private async request<T>(method: METHOD, url: string | number, config?: IConfig, data?: T) {
     url = this.handleRestful(String(url), config);
-    return await requestHandler(this.instance, method, url, config, data);
+    return requestHandler(this.instance, method, url, config, data);
   }
 
   async get<URL extends keyof IGetRoute>(url: URL, config?: IConfig<IGetRoute[URL]['request']>): Promise<IGetRoute[URL]['response']> {
