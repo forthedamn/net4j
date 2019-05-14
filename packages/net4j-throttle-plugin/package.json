@@ -1,6 +1,6 @@
 {
   "name": "net4j-throttle-plugin",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Throttle each request in waiting time",
   "main": "build/index.js",
   "scripts": {
@@ -13,6 +13,7 @@
   "author": "forthedamn",
   "license": "MIT",
   "dependencies": {
-    "net4j": "latest"
+    "net4j": "latest",
+    "qs": "^6.7.0"
   }
 }
