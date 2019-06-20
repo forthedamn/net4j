@@ -4,8 +4,9 @@ import { AxiosResponse } from 'axios';
 const MIN_EXCEPTION_HTTP_CODE = 400;
 
 export interface PluginConfig extends RootConfig {
-  defaultExceptionText?: string;
+  exceptionText?: string;
   actionName?: string;
+  quiet?: boolean;
 }
 
 type codeFunc = (e?: AxiosResponse) => void | string;
@@ -16,11 +17,11 @@ interface Config {
   codeMsgMap?: (code?: number) => codeFunc;
   // Get business exception code
   bizExceptionCode?: (res: AxiosResponse) => { code?: string | number } | undefined;
+  quiet?: boolean;
 }
 
 class ExceptionPlugin implements IPlugin {
   private config: Config;
-  private exceptionText: string;
 
   constructor(config: Config = {}) {
     this.config = config;
@@ -30,13 +31,6 @@ class ExceptionPlugin implements IPlugin {
     if (e) {
       this.config.tipsComponent(undefined, e.message);
       return Promise.reject(e);
-    }
-    // For more flexible , every request can reset defaultExceptionText.
-    // When request with defaultExceptionText:null, tipComponent will not show
-    if (config.defaultExceptionText === null) {
-      this.exceptionText = null;
-    } else {
-      this.exceptionText = (config.actionName || '') + (config.defaultExceptionText || this.config.defaultExceptionText || 'fail');
     }
     return config;
   }
@@ -49,8 +43,11 @@ class ExceptionPlugin implements IPlugin {
   afterRequest(e, res: AxiosResponse) {
     let code, errorHandler, info;
 
-    // When request with defaultExceptionText:null, tipComponent will not show
-    if (this.exceptionText === null) {
+    // When request with exceptionText:null, tipComponent will not show
+    if (res && res.config && ((res.config as PluginConfig).exceptionText === null || (res.config as Config).quiet === true)) {
+      if (e) {
+        return Promise.reject(e);
+      }
       return res;
     }
     
@@ -87,7 +84,7 @@ class ExceptionPlugin implements IPlugin {
     }
 
     const message = errorHandler || (res && res.data && (res.data.msg || res.data.message)) ||
-      (e && (e.msg || e.message)) || this.exceptionText;
+      (e && (e.msg || e.message)) || this.config.defaultExceptionText || 'fail';
 
     this.config.tipsComponent(code, message);
 

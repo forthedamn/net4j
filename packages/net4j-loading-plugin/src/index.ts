@@ -2,7 +2,8 @@ import { IPlugin, IConfig as RootConfig } from 'net4j';
 
 export interface PluginConfig extends RootConfig {
   actionName?: string;
-  defaultLoadingText?: string;
+  loadingText?: string;
+  quiet?: boolean;
 }
 
 interface Config {
@@ -20,15 +21,20 @@ class LoadingPlugin implements IPlugin{
   }
 
   beforeRequest(e: Error, config: PluginConfig) {
+    if (config && (config.loadingText === null || config.quiet)) {
+      return config;
+    }
     // For more flexible , every request can reset laodingText.
     const loadingText = (config.actionName || '') +
-      (config.defaultLoadingText || this.config.defaultLoadingText || 'loading');
+      (config.loadingText || this.config.defaultLoadingText || 'loading');
     this.loadingClose = this.config.loading(loadingText);
     return config;
   }
 
   afterRequest(e, res) {
-    this.loadingClose();
+    if (typeof this.loadingClose === 'function') {
+      this.loadingClose();
+    }
     if (e) {
       return Promise.reject(e);
     }
