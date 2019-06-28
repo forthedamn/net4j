@@ -4,7 +4,7 @@ import { requestHandler } from './utils';
 import { initPlugin, defaultPlugin } from './plugins';
 import { IGetRoute, IConfig, INetConfig, IPlugin, METHOD, IDeleteRoute,  IPostRoute,  IPutRoute, ILib } from './index';
 
-class Net4j {
+class Net4j<C = {}> {
   private pluginsList?: IPlugin[];
   private lib: ILib;
   private instance: AxiosInstance;
@@ -39,24 +39,24 @@ class Net4j {
     });
   }
 
-  private async request<T>(method: METHOD, url: string | number, config?: IConfig, data?: T) {
+  private async request<T>(method: METHOD, url: string | number, config?: IConfig & T, data?: T) {
     url = this.handleRestful(String(url), config);
     return requestHandler(this.instance, method, url, config, data);
   }
 
-  async get<URL extends keyof IGetRoute>(url: URL, config?: IConfig<IGetRoute[URL]['request']>): Promise<IGetRoute[URL]['response']> {
+  async get<URL extends keyof IGetRoute>(url: URL, config?: IConfig<IGetRoute[URL]['request']> & C): Promise<IGetRoute[URL]['response']> {
     return await this.request(METHOD.GET, url, config);
   }
 
-  async post<URL extends keyof  IPostRoute>(url: URL, postdata?:  IPostRoute[URL]['request'], config?: IConfig< IPostRoute[URL]['request']>): Promise< IPostRoute[URL]['response']> {
+  async post<URL extends keyof  IPostRoute>(url: URL, postdata?:  IPostRoute[URL]['request'], config?: IConfig< IPostRoute[URL]['request']> & C): Promise< IPostRoute[URL]['response']> {
     return await this.request(METHOD.POST, url, config, postdata);
   }
 
-  async put<URL extends keyof  IPutRoute>(url: URL, pudata?:  IPutRoute[URL]['request'], config?: IConfig< IPutRoute[URL]['request']>): Promise< IPutRoute[URL]['response']> {
+  async put<URL extends keyof  IPutRoute>(url: URL, pudata?:  IPutRoute[URL]['request'], config?: IConfig< IPutRoute[URL]['request']> & C): Promise< IPutRoute[URL]['response']> {
     return await this.request(METHOD.PUT, url, config, pudata);
   }
 
-  async dlt<URL extends keyof IDeleteRoute>(url: URL, config?: IConfig<IDeleteRoute[URL]['request']>): Promise<IDeleteRoute[URL]['response']> {
+  async dlt<URL extends keyof IDeleteRoute>(url: URL, config?: IConfig<IDeleteRoute[URL]['request']> & C): Promise<IDeleteRoute[URL]['response']> {
     return await this.request(METHOD.DELETE, url, config);
   }
 }
