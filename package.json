@@ -1,6 +1,9 @@
 {
   "name": "net4j",
   "private": true,
+  "scripts": {
+    "publish": "lerna publish"
+  },
   "devDependencies": {
     "lerna": "^3.6.0",
     "tslint": "^5.13.1",
