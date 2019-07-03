@@ -4,7 +4,7 @@ import { AxiosResponse } from 'axios';
 const MIN_EXCEPTION_HTTP_CODE = 400;
 
 export interface PluginConfig extends RootConfig {
-  exceptionText?: string;
+  exceptionText?: string | null;
   actionName?: string;
   quiet?: boolean;
 }

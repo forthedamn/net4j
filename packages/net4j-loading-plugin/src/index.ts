@@ -2,7 +2,7 @@ import { IPlugin, IConfig as RootConfig } from 'net4j';
 
 export interface PluginConfig extends RootConfig {
   actionName?: string;
-  loadingText?: string;
+  loadingText?: string | null;
   quiet?: boolean;
 }
 

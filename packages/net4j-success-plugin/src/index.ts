@@ -2,7 +2,7 @@ import { IPlugin, IConfig as RootConfig } from 'net4j';
 
 export interface PluginConfig extends RootConfig {
   actionName?: string;
-  successText?: string;
+  successText?: string | null;
 }
 interface Config {
   tipsComponent: (text?: string) => void;
