@@ -58,7 +58,10 @@ class ExceptionPlugin implements IPlugin {
     }
     // get exception
     else if(e) {
-      code = e.code || (e.response && e.response.code);
+      // when network error, get code undefined.Turn to -1
+      code = e.code || (e.response && e.response.code) || -1;
+      // when timeout will get code 'ECONNABORTED'.Turn to -1
+      code = isNaN(+code) ? -1 : code;
       info = e;
     }
     else if (res && this.config.bizExceptionCode) {
