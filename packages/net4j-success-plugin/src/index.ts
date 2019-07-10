@@ -26,7 +26,7 @@ class SuccessPlugin implements IPlugin{
     if (e) {
       return Promise.reject(e);
     }
-    if (res && (res.config.quiet === true || res.config.successText === null)) {
+    if (res && res.config && (res.config.quiet === true || res.config.successText === null)) {
       return res;
     }
     if (res && res.config && this.config.isShow(res)) {

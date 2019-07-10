@@ -42,9 +42,10 @@ class ExceptionPlugin implements IPlugin {
    */
   afterRequest(e, res: AxiosResponse) {
     let code, errorHandler, info;
-
-    // When request with exceptionText:null, tipComponent will not show
-    if (res && res.config && ((res.config as PluginConfig).exceptionText === null || (res.config as Config).quiet === true)) {
+    const isErrorQuite = e && e.config && (e.config.exceptionText === null || e.config.quiet === true);
+    const isResQuite = res && res.config && ((res.config as PluginConfig).exceptionText === null || (res.config as Config).quiet === true)
+    // When request with exceptionText:null, or quite tipComponent will not show
+    if (isErrorQuite || isResQuite) {
       if (e) {
         return Promise.reject(e);
       }

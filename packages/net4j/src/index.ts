@@ -1,4 +1,4 @@
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
 import Net from './net';
 
 export default Net;
