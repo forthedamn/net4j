@@ -1,6 +1,6 @@
 {
   "name": "net4j-formatter-plugin",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Format response data",
   "main": "build/index.js",
   "scripts": {
