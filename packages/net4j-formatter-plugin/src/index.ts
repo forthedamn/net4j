@@ -19,6 +19,7 @@ class FormatterPlugin implements IPlugin {
   constructor(config: FormatterConfig = {}) {
     this.formatter = config.formatter;
     this.preFormatter = config.preFormatter;
+    this.errorFormatter = config.errorFormatter;
   }
 
   beforeRequest(_e: AxiosError, config: AxiosRequestConfig) {
