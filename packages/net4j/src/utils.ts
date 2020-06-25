@@ -5,7 +5,7 @@ interface Header {
   [key: string]: string | number;
 }
 
-const DEFAULT_TIMEOUT = 10000;
+const DEFAULT_TIMEOUT = 30000;
 
 const header2LowerCase = (object?: Header) => {
   if (!object) return {};
@@ -18,7 +18,7 @@ const header2LowerCase = (object?: Header) => {
 
 // 统一处理 ajax 结果
 export const requestHandler = async <T = any>(instance: AxiosInstance, action: METHOD, url: string, config: IConfig = {}, reqdata:T) => {
-  config.timeout = (config && config.timeout) || DEFAULT_TIMEOUT;
+  if (config.timeout === undefined) config.timeout = DEFAULT_TIMEOUT;
   if (config.headers) {
     config.headers = header2LowerCase(config.headers);
   }
