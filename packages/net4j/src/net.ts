@@ -24,9 +24,30 @@ class Net4j<C = {}> {
   private initPlugins() {
     if (this.pluginsList) {
       for (const plugin of this.pluginsList) {
-        this.lib = initPlugin(this.instance, plugin, this.lib);
+        this.lib = initPlugin(this.instance, plugin, this.lib).lib;
       }
     }
+  }
+
+  // 在网络库实例化后，注册新的插件
+  addPlugins(plugins: IPlugin[]) {
+    // 可以注释掉插件
+    const rejectList: Array<() => void> = []
+    for (const plugin of plugins) {
+      const res = initPlugin(this.instance, plugin, this.lib);
+      rejectList.push(() => {
+        if (res.reject.request) {
+          this.instance.interceptors.request.eject(res.reject.request);
+        }
+        if (res.reject.response) {
+          this.instance.interceptors.response.eject(res.reject.reponse);
+        }
+      });
+      if (res.lib) {
+        this.lib = Object.assign(this.lib, res.lib);
+      }
+    }
+    return rejectList;
   }
 
   private handleRestful(url: string, config?: IConfig) {
