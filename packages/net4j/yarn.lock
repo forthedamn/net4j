@@ -1204,9 +1204,9 @@ has@^1.0.1, has@^1.0.3:
     function-bind "^1.1.1"
 
 hosted-git-info@^2.1.4:
-  version "2.7.1"
-  resolved "https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
-  integrity sha512-7T/BxH19zbcCTa8XkMlbK5lTo1WtgkFi3GvdWEyNuc4Vex7/9Dqbnpsf4JMydcfj9HCg4zUWFTL3Za6lapg5/w==
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 html-encoding-sniffer@^1.0.2:
   version "1.0.2"
@@ -2246,6 +2246,21 @@ needle@^2.2.1:
     debug "^2.1.2"
     iconv-lite "^0.4.4"
     sax "^1.2.4"
+
+net4j-log-plugin@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/net4j-log-plugin/-/net4j-log-plugin-1.0.16.tgz#673062ddb5e3dc2c3ba8a99c54a3e52864a62d73"
+  integrity sha512-sSUzl38urHGVOckIn8XtdzbbYfaYbTuEqFgNfDBz4S1FgMttivnbArEo+ATEaGMLEWYqAf/hmdUaMCv4eUmp7w==
+  dependencies:
+    net4j "^1.1.14"
+
+net4j@^1.1.14:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/net4j/-/net4j-1.2.0.tgz#2db3b20276f9e77a24ee5d64dae9da7c0b79cb00"
+  integrity sha512-E2sNiNLGd8Crsl+/iKzF5OIdG2vGigI8HDIMyP979az0nEMfwQ0CrNMA11UZD6mGsgimIumCYGaCIiBp/EfRnQ==
+  dependencies:
+    axios "^0.18.0"
+    net4j-log-plugin "^1.0.16"
 
 nice-try@^1.0.4:
   version "1.0.5"
