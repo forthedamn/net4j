@@ -2247,6 +2247,21 @@ needle@^2.2.1:
     iconv-lite "^0.4.4"
     sax "^1.2.4"
 
+net4j-log-plugin@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/net4j-log-plugin/-/net4j-log-plugin-1.0.16.tgz#673062ddb5e3dc2c3ba8a99c54a3e52864a62d73"
+  integrity sha512-sSUzl38urHGVOckIn8XtdzbbYfaYbTuEqFgNfDBz4S1FgMttivnbArEo+ATEaGMLEWYqAf/hmdUaMCv4eUmp7w==
+  dependencies:
+    net4j "^1.1.14"
+
+net4j@^1.1.14:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/net4j/-/net4j-1.2.0.tgz#2db3b20276f9e77a24ee5d64dae9da7c0b79cb00"
+  integrity sha512-E2sNiNLGd8Crsl+/iKzF5OIdG2vGigI8HDIMyP979az0nEMfwQ0CrNMA11UZD6mGsgimIumCYGaCIiBp/EfRnQ==
+  dependencies:
+    axios "^0.18.0"
+    net4j-log-plugin "^1.0.16"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.npmjs.org/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -2545,9 +2560,9 @@ path-key@^2.0.0, path-key@^2.0.1:
   integrity sha1-QRyttXTFoUDTpLGRDUDYDMn0C0A=
 
 path-parse@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.npmjs.org/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
-  integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
+  integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
 
 path-to-regexp@^1.7.0:
   version "1.7.0"
