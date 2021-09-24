@@ -2247,6 +2247,21 @@ needle@^2.2.1:
     iconv-lite "^0.4.4"
     sax "^1.2.4"
 
+net4j-log-plugin@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/net4j-log-plugin/-/net4j-log-plugin-1.0.16.tgz#673062ddb5e3dc2c3ba8a99c54a3e52864a62d73"
+  integrity sha512-sSUzl38urHGVOckIn8XtdzbbYfaYbTuEqFgNfDBz4S1FgMttivnbArEo+ATEaGMLEWYqAf/hmdUaMCv4eUmp7w==
+  dependencies:
+    net4j "^1.1.14"
+
+net4j@^1.1.14:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/net4j/-/net4j-1.2.0.tgz#2db3b20276f9e77a24ee5d64dae9da7c0b79cb00"
+  integrity sha512-E2sNiNLGd8Crsl+/iKzF5OIdG2vGigI8HDIMyP979az0nEMfwQ0CrNMA11UZD6mGsgimIumCYGaCIiBp/EfRnQ==
+  dependencies:
+    axios "^0.18.0"
+    net4j-log-plugin "^1.0.16"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.npmjs.org/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -3184,9 +3199,9 @@ throat@^4.0.0:
   integrity sha1-iQN8vJLFarGJJua6TLsgDhVnKmo=
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
-  integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
+  integrity sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
