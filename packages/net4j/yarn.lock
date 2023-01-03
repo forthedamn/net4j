@@ -1939,11 +1939,9 @@ json-stringify-safe@~5.0.1:
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
 
 json5@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/json5/-/json5-2.1.0.tgz#e7a0c62c48285c628d20a10b85c89bb807c32850"
-  integrity sha512-8Mh9h6xViijj36g7Dxi+Y4S6hNGV96vcJZr/SrlHh1LR/pEn/8j/+qIBbs44YKl69Lrfctp4QD+AdWLTMqEZAQ==
-  dependencies:
-    minimist "^1.2.0"
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
+  integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
 
 jsprim@^1.2.2:
   version "1.4.1"
@@ -2246,6 +2244,21 @@ needle@^2.2.1:
     debug "^2.1.2"
     iconv-lite "^0.4.4"
     sax "^1.2.4"
+
+net4j-log-plugin@^1.0.15, net4j-log-plugin@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/net4j-log-plugin/-/net4j-log-plugin-1.0.16.tgz#673062ddb5e3dc2c3ba8a99c54a3e52864a62d73"
+  integrity sha512-sSUzl38urHGVOckIn8XtdzbbYfaYbTuEqFgNfDBz4S1FgMttivnbArEo+ATEaGMLEWYqAf/hmdUaMCv4eUmp7w==
+  dependencies:
+    net4j "^1.1.14"
+
+net4j@^1.1.14:
+  version "1.1.16"
+  resolved "https://registry.yarnpkg.com/net4j/-/net4j-1.1.16.tgz#72a73f1e10f6523c92de2a8351d73a5050b9c37b"
+  integrity sha512-9ZHptSCtxs83MTQ7AklADfIH/4XnPt3F1uuXydrj8trRrVFr9TnQrdLRxCEm5pyYdjnPDGVFprDqS8PvoAOgVw==
+  dependencies:
+    axios "^0.18.0"
+    net4j-log-plugin "^1.0.15"
 
 nice-try@^1.0.4:
   version "1.0.5"
